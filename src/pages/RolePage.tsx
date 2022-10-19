@@ -13,12 +13,14 @@ import Project from '../ui/Project';
 import { push } from 'connected-react-router';
 import OrganizationModel from '../model/Organization';
 import OrganizationRef from '../model/OrganizationRef';
+import { StyleProps } from '../style';
+import { PageContainer } from './common';
 
 export interface RolePageParams {
   id: string;
 }
 
-export interface RolePagePublicProps extends RouteComponentProps<RolePageParams> {
+export interface RolePagePublicProps extends StyleProps, RouteComponentProps<RolePageParams> {
 }
 
 interface RolePagePrivateProps {
@@ -31,13 +33,6 @@ interface RolePagePrivateProps {
 
 type Props = RolePagePublicProps & RolePagePrivateProps;
 
-const Container = styled('div', {
-  padding: '1rem',
-  borderRadius: '0.5rem',
-  border: '1px solid #ccc',
-  backgroundColor: 'rgb(255, 255, 255)',
-});
-
 class RolePage extends React.Component<Props> {
   private onProjectClick_ = (id: string) => (event: React.MouseEvent) => {
     this.props.onProjectClick(id);
@@ -45,10 +40,16 @@ class RolePage extends React.Component<Props> {
 
   render() {
     const { props } = this;
-    const { role, projects, organization } = props;
+    const {
+      role,
+      projects,
+      organization,
+      className,
+      style
+    } = props;
 
     return (
-      <Container>
+      <PageContainer className={className} style={style}>
         <Section title='Role'>
           <Role role={role} />
         </Section>
@@ -61,7 +62,7 @@ class RolePage extends React.Component<Props> {
             />
           ))}
         </Section>
-      </Container>
+      </PageContainer>
     );
   }
 }

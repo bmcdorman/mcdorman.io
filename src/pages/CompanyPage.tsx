@@ -13,11 +13,7 @@ import Role from '../ui/Role';
 import Section from '../ui/Section';
 import { push } from 'connected-react-router';
 import { descending } from '../model/sort';
-
-const Container = styled('div', {
-  padding: '1rem',
-});
-
+import { PageContainer } from './common';
 
 class CompanyPage extends React.Component<CompanyPage.Props> {
   private onProjectClick_ = (id: string) => (event: React.MouseEvent) => {
@@ -33,7 +29,7 @@ class CompanyPage extends React.Component<CompanyPage.Props> {
     const { company, roles, projects } = props;
 
     return (
-      <Container>
+      <PageContainer>
         <Section title='Company'>
           <Company company={company} />
         </Section>
@@ -56,7 +52,7 @@ class CompanyPage extends React.Component<CompanyPage.Props> {
             />
           ))}
         </Section>
-      </Container>
+      </PageContainer>
     );
   }
 }
