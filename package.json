@@ -13,6 +13,7 @@
     "@types/react-router-redux": "^5.0.21",
     "@types/styletron-react": "^5.0.3",
     "parcel": "^2.7.0",
+    "parcel-reporter-static-files-copy": "^1.4.0",
     "process": "^0.11.10",
     "typescript": ">=3.0.0"
   },
@@ -35,5 +36,9 @@
     "styletron": "^3.0.4",
     "styletron-engine-atomic": "^1.5.0",
     "styletron-react": "^6.1.0"
+  },
+  "staticFiles": {
+    "staticPath": "static",
+    "watcherGlob": "**"
   }
 }

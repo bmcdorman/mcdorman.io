@@ -27,12 +27,12 @@ class App extends React.Component {
       <Container>
         <Top />
         <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path='/company/:id' component={CompanyPage} />
-          <Route path='/school/:id' component={SchoolPage} />
-          <Route path='/project/:id' component={ProjectPage} />
-          <Route path='/role/:id' component={RolePage} />
-          <Route path='/resume' component={ResumePage} />
+          <Route path='#/company/:id' component={CompanyPage} />
+          <Route path='#/school/:id' component={SchoolPage} />
+          <Route path='#/project/:id' component={ProjectPage} />
+          <Route path='#/role/:id' component={RolePage} />
+          <Route path='#/resume' component={ResumePage} />
+          <Route path="/" component={HomePage} />
           <Route component={NotFound} />
         </Switch>
         <Footer />
