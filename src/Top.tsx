@@ -21,7 +21,6 @@ const Title = styled('div', {
   display: 'inline-block',
   fontWeight: 500,
   cursor: 'pointer',
-  marginRight: '0.5rem',
 });
 
 const Button = styled('div', {
@@ -29,20 +28,14 @@ const Button = styled('div', {
   fontWeight: 300,
   height: '100%',
   cursor: 'pointer',
-  margin: '-0.5rem',
-  padding: '0.5rem',
-  ':hover': {
-    backgroundColor: 'rgba(0, 0, 0, 0.1)',
-  },
-  marginLeft: '1.5rem',
   transition: 'background-color 0.2s',
 });
 
 const Sep = styled('div', {
   display: 'inline-block',
-  marginLeft: '1.5rem',
   borderLeft: '1px solid rgba(255, 255, 255, 0.5)',
   height: '1.5rem',
+  margin: '1rem',
 });
 
 class Top extends React.Component<Top.Props> {
