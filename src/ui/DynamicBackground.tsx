@@ -248,8 +248,6 @@ class DynamicBackground extends React.Component<DynamicBackground.Props, Dynamic
               const vAC = Vector3.subtract(vC, vA);
               const normal = Vector3.normalize(Vector3.cross(vAB, vAC));
 
-              if (i === 0) console.log(normal);
-
               const rgb = Vector3.add(BASE_COLOR, Vector3.multiplyScalar(normal, 10));
 
               return (
