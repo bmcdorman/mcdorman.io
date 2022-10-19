@@ -30,7 +30,7 @@ const Svg = styled('svg', {
   height: '100%',
 });
 
-const BASE_COLOR: Vector3 = { x: 0xcc, y: 0x11, z: 0x11 };
+const BASE_COLOR: Vector3 = { x: 0x8d, y: 0x02, z: 0x1f };
 
 class DynamicBackground extends React.Component<DynamicBackground.Props, DynamicBackground.State> {
   constructor(props: DynamicBackground.Props) {
@@ -137,7 +137,7 @@ class DynamicBackground extends React.Component<DynamicBackground.Props, Dynamic
 
     
 
-    const jiggle = 1 / (2 ** (subdivisions + 1));
+    const jiggle = 1 / (2 ** (subdivisions + 1)) * 0.8;
 
     const currentVertices = [ ...startVertices ];
     
@@ -160,9 +160,9 @@ class DynamicBackground extends React.Component<DynamicBackground.Props, Dynamic
       startVertices,
       currentVertices,
       velocities: uniqueVertices.map(() => Vector3.create(
-        Math.random() * 0.01 + 0.001,
-        Math.random() * 0.01 + 0.001,
-        Math.random() * 0.01 + 0.001,
+        Math.random() * 0.005 - 0.0025,
+        Math.random() * 0.005 - 0.0025,
+        Math.random() * 0.05 - 0.025,
       )),
       maxDelta: Vector3.create(jiggle, jiggle, 1),
       triangles: uniqueTriangles,
@@ -257,7 +257,7 @@ class DynamicBackground extends React.Component<DynamicBackground.Props, Dynamic
                   key={i}
                   points={`${vA.x},${vA.y} ${vB.x},${vB.y} ${vC.x},${vC.y}`}
                   fill={`rgb(${rgb.x}, ${rgb.y}, ${rgb.z})`}
-                  stroke={`rgb(${BASE_COLOR.x}, ${BASE_COLOR.y}, ${BASE_COLOR.z})`}
+                  stroke={`rgb(${rgb.x}, ${rgb.y}, ${rgb.z})`}
                 />
               );
             })}
