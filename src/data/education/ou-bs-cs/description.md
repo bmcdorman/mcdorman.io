@@ -1,0 +1,1 @@
+Received B.S. in Computer Science with a minor in Mathematics.

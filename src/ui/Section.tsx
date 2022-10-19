@@ -27,12 +27,12 @@ const Title = styled('div', {
 const Container = styled('div', {
   width: '100%',
   padding: '1rem',
-  borderRadius: '1rem',
-  marginTop: '1rem',
   ':first-child': {
     marginTop: 0,
   },
-  backgroundColor: 'rgba(0,0, 0, 0.05)',
+  ':not(:last-child)': {
+    borderBottom: '1px solid rgba(0, 0, 0, 0.2)',
+  }
 });
 
 class Section<P extends {} = any> extends React.Component<Props<P>> {
@@ -44,7 +44,7 @@ class Section<P extends {} = any> extends React.Component<Props<P>> {
         <TitleContainer>
           <Title>{title}</Title>
           <FlexSpacer />
-          {right ? Component.render<P>(right) : null}
+          {right && Component.render<P>(right)}
         </TitleContainer>
         {children}
       </Container>

@@ -12,6 +12,7 @@ import Project from '../ui/Project';
 import Role from '../ui/Role';
 import Section from '../ui/Section';
 import { push } from 'connected-react-router';
+import { descending } from '../model/sort';
 
 const Container = styled('div', {
   padding: '1rem',
@@ -86,7 +87,7 @@ export default connect((state: State, { match: { params: { id } } }: CompanyPage
     company: state.companies[id],
     roles: Object.values(state.roles)
       .filter(role => role.organizationRef && role.organizationRef.id === id)
-      .sort(RoleModel.descending),
+      .sort(descending),
     projects: Object.values(state.projects)
       .filter(project => (
         project.roleIds &&

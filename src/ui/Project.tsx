@@ -7,21 +7,7 @@ import State from '../State';
 
 import Markdown from './Markdown';
 import { StyleProps } from '../style';
-
-const Container = styled('div', ({ $clickable }: { $clickable: boolean }) => ({
-  ':hover': $clickable ? {
-    backgroundColor: `rgba(0, 0, 0, 0.1)`,
-  } : {},
-  cursor: $clickable ? 'pointer' : 'default',
-  padding: '0.5rem',
-  borderRadius: '0.5rem',
-  transition: 'background-color 0.2s',
-}));
-
-const Name = styled('div', {
-  fontSize: '1.5em',
-  fontWeight: 400,
-});
+import { ItemContainer, ItemTop } from './common';
 
 class Project extends React.Component<Project.Props> {
   render() {
@@ -31,15 +17,17 @@ class Project extends React.Component<Project.Props> {
     const { name, description } = project;
 
     return (
-      <Container
+      <ItemContainer
         className={className}
         style={style}
         onClick={onClick}
         $clickable={!!onClick}
       >
-        <Name>{name}</Name>
-        {description ? <Markdown>{description}</Markdown> : null}
-      </Container>
+        <ItemTop>
+          <div>{name}</div>
+        </ItemTop>
+        {description && <Markdown>{description}</Markdown>}
+      </ItemContainer>
     );
   }
 }

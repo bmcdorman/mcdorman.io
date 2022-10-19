@@ -16,5 +16,6 @@ export default {
     ],
   }],
   description: '',
-  roleId: 'kipr-software-engineer',
+  roleIds: [ 'kipr-software-engineer' ],
+  relatedProjectIds: [ 'kipr-wallaby', 'kipr-libwallaby' ],
 } as Project;

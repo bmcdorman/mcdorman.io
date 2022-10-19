@@ -21,6 +21,9 @@ import { parse } from 'qs';
 import { FontAwesomeIcon as Icon, FontAwesomeIconProps as IconProps } from '@fortawesome/react-fontawesome';
 import { faExpand, faCompress } from '@fortawesome/free-solid-svg-icons';
 import { RouteComponentProps } from 'react-router';
+import EducationModel from '../model/Education';
+import { descending } from '../model/sort';
+import Education from '../ui/Education';
 
 
 
@@ -66,12 +69,15 @@ class ResumePage extends React.Component<ResumePage.Props, ResumePage.State> {
 
   render() {
     const { props, state } = this;
-    const { resume, roles, location } = props;
+    const { resume, roles, education } = props;
     const { about, contacts, skills } = resume;
     const { rolesStyle } = state;
 
     const roleModels: RoleModel[] = resume.roleIds.map(id => roles[id]);
-    roleModels.sort(RoleModel.descending);
+    roleModels.sort(descending);
+
+    const educationModels: EducationModel[] = Object.values(education);
+    educationModels.sort(descending);
 
     const rolesRight = Component.create(OneOf, {
       options: ResumePage.ROLES_STYLE_OPTIONS,
@@ -86,7 +92,7 @@ class ResumePage extends React.Component<ResumePage.Props, ResumePage.State> {
             <Markdown>{about}</Markdown>
           </Section>
           <Section title='Roles' right={rolesRight}>
-            {roleModels.map((role) => (
+            {roleModels.map(role => (
               <Role
                 key={role.id}
                 role={role}
@@ -96,7 +102,12 @@ class ResumePage extends React.Component<ResumePage.Props, ResumePage.State> {
             ))}
           </Section>
           <Section title='Education'>
-            
+            {educationModels.map(education => (
+              <Education
+                key={education.id}
+                education={education}
+              />
+            ))}
           </Section>
         </Left>
         <Right>
@@ -122,6 +133,7 @@ namespace ResumePage {
   interface PrivateProps {
     resume: ResumeModel;
     roles: { [id: string]: RoleModel };
+    education: { [id: string]: EducationModel };
   
     onRoleClick: (id: string) => void;
   }
@@ -149,6 +161,7 @@ namespace ResumePage {
 export default connect((state: State, ownProps: ResumePage.PublicProps) => ({
   resume: state.resume,
   roles: state.roles,
+  education: state.education,
 }), dispatch => ({
   onRoleClick: (id: string) => dispatch(push(`/role/${id}`)),
 }))(ResumePage) as React.ComponentType<ResumePage.PublicProps>;

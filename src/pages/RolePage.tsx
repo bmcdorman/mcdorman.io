@@ -71,7 +71,7 @@ export default connect((state: State, { match: { params: { id } } }: RolePagePub
       ? OrganizationRef.resolve(role.organizationRef, state)
       : undefined,
     projects: Object.values(state.projects)
-      .filter(project => project.roleIds?.findIndex(i => i === id) !== -1)
+      .filter(project => project.roleIds && project.roleIds.findIndex(i => i === id) !== -1)
   };
 }, dispatch => ({
   onProjectClick: (id: string) => dispatch(push(`/project/${id}`)),

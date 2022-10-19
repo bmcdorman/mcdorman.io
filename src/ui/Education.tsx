@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router';
 
-import RoleModel from '../model/Role';
-import CompanyModel from '../model/Company';
+import EducationModel from '../model/Education';
 
 import { styled } from 'styletron-react';
 import Markdown from './Markdown';
@@ -16,20 +14,20 @@ import OrganizationRef from '../model/OrganizationRef';
 import OrganizationModel from '../model/Organization';
 import { ItemContainer, ItemTop } from './common';
 
-export interface RolePublicProps {
-  role: RoleModel;
+export interface EducationPublicProps {
+  education: EducationModel;
   onClick?: (event: React.MouseEvent) => void;
   mini?: boolean;
   hideOrganization?: boolean;
 }
 
-interface RolePrivateProps {
+interface EducationPrivateProps {
   organization?: OrganizationModel;
 
   onOrganizationClick: (ref: OrganizationRef, event: React.MouseEvent) => void;
 }
 
-type Props = RolePublicProps & RolePrivateProps;
+type Props = EducationPublicProps & EducationPrivateProps;
 
 const Info = styled('div', {
 });
@@ -60,7 +58,7 @@ const LocationContainer = styled('div', {
   fontSize: '1rem',
 });
 
-class Role extends React.Component<Props> {
+class Education extends React.Component<Props> {
   private onOrganizationClick_ = (ref: OrganizationRef) => (event: React.MouseEvent) => {
     event.preventDefault();
     event.stopPropagation();
@@ -70,17 +68,17 @@ class Role extends React.Component<Props> {
   render() {
     const { props } = this;
     const {
-      role,
+      education,
       organization,
       onClick,
       hideOrganization,
       mini
     } = props;
 
-    const { name, description, location } = role;
+    const { name, description, location } = education;
 
-    const startDate = new Date(role.startDate);
-    const endDate = role.endDate ? new Date(role.endDate) : null;
+    const startDate = new Date(education.startDate);
+    const endDate = education.endDate ? new Date(education.endDate) : null;
     
     const organizationLogoUri = organization ? OrganizationModel.logoUri(organization) : null;
 
@@ -90,7 +88,7 @@ class Role extends React.Component<Props> {
           <Info>
             <Name>{name}</Name>
             {organization && !hideOrganization && (
-              <CompanyName onClick={this.onOrganizationClick_(role.organizationRef!)}>{OrganizationModel.name(organization)}</CompanyName>
+              <CompanyName onClick={this.onOrganizationClick_(education.organizationRef!)}>{OrganizationModel.name(organization)}</CompanyName>
             )}
             <Dates>
               {toHumanMonthYear(startDate)} to {endDate ? toHumanMonthYear(endDate) : 'Present'}
@@ -106,7 +104,7 @@ class Role extends React.Component<Props> {
           <FlexSpacer />
           {organizationLogoUri && !hideOrganization && (
             <Company
-              onClick={this.onOrganizationClick_(role.organizationRef!)}
+              onClick={this.onOrganizationClick_(education.organizationRef!)}
             >
               <Image src={organizationLogoUri} />
             </Company>
@@ -118,7 +116,7 @@ class Role extends React.Component<Props> {
   }
 }
 
-export default connect((state: State, { role }: RolePublicProps) => ({
+export default connect((state: State, { education: role }: EducationPublicProps) => ({
   organization: role.organizationRef ? OrganizationRef.resolve(role.organizationRef, state) : undefined,
 }), dispatch => ({
   onOrganizationClick: (ref: OrganizationRef) => {
@@ -133,4 +131,4 @@ export default connect((state: State, { role }: RolePublicProps) => ({
       }
     }
   }
-}))(Role) as React.ComponentType<RolePublicProps>;
+}))(Education) as React.ComponentType<EducationPublicProps>;

@@ -3,6 +3,7 @@ import { styled } from 'styletron-react';
 import ProgrammingLanguage from './model/ProgrammingLanguage';
 
 import Skill from './model/Skill';
+import Pill from './ui/Pill';
 
 export interface SkillsProps {
   skills: Skill[];
@@ -10,15 +11,13 @@ export interface SkillsProps {
 
 type Props = SkillsProps;
 
-export const Pill = styled('span', {
-  padding: '0.2em',
-  borderRadius: '0.5em',
-  backgroundColor: 'rgba(0, 0, 0, 0.1)',
-});
+
 
 const Container = styled('div', {
   width: '100%',
-  
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
 });
 
 const Header = styled('div', {

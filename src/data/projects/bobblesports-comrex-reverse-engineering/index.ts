@@ -9,7 +9,7 @@ export default {
   id: 'bobblesports-comrex-reverse-engineering',
   name: 'COMREX Audio Protocol Reverse Engineering',
   companyId: 'bobblesports',
-  roleId: 'bobblesports-advisor',
+  roleIds: [ 'bobblesports-advisor' ],
   contributionLevel: ContributionLevel.Critical,
   contributions: [{
     type: Contribution.Type.Programming,
