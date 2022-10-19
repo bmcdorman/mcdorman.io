@@ -20,7 +20,7 @@ class Footer extends React.Component<Props> {
   render() {
     return (
       <Container>
-        Written in React and TypeScript. <a href="https://github.com/bmcdorman/mcdorman.io" target="_blank">Source Code</a>.
+        Written in React and TypeScript. <a href="https://github.com/bmcdorman/mcdorman.io" target="_blank">Source Code</a>. <br />
         Copyright © 2022 Braden McDorman. All Rights Reserved.
       </Container>
     );
