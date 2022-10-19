@@ -9,7 +9,7 @@ import resizeListener, { ResizeListener } from '../util/resizeListener';
 const Container = styled('div', {
   width: '100vw',
   height: '100vh',
-  position: 'absolute',
+  position: 'fixed',
   top: 0,
   left: 0,
   zIndex: -1,

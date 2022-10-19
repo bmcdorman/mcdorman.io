@@ -10,8 +10,10 @@ type Props = FooterProps;
 const Container = styled('div', {
   width: '100%',
   textAlign: 'center',
-  marginTop: '1rem',
-  fontSize: '0.8em'
+  margin: '1rem',
+  fontSize: '0.8em',
+
+  color: 'white'
 });
 
 class Footer extends React.Component<Props> {
