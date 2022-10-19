@@ -193,7 +193,7 @@ class DynamicBackground extends React.PureComponent<DynamicBackground.Props, Dyn
   private lastTick_ = Date.now();
   private tick_ = () => {
     const now = Date.now();
-    const dt = (now - this.lastTick_) / 1000;
+    const dt = Math.min((now - this.lastTick_) / 1000, 0.1);
     this.lastTick_ = now;
 
     const { startVertices, currentVertices, maxDelta, velocities } = this.state;
