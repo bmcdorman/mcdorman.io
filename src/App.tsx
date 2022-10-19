@@ -17,8 +17,12 @@ interface AppProps {
 }
 
 const Container = styled('div', {
-  width: '100%',
-  position: 'relative'
+  position: 'relative',
+  width: '1024px',
+  '@media screen and (max-width: 1024px)': {
+    width: '100%',
+  },
+  margin: '0 auto',
 });
 
 class App extends React.Component {

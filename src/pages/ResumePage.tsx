@@ -24,6 +24,8 @@ import { RouteComponentProps } from 'react-router';
 import EducationModel from '../model/Education';
 import { descending } from '../model/sort';
 import Education from '../ui/Education';
+import resizeListener, { ResizeListener } from '../util/resizeListener';
+import Vector2 from '../math/Vector2';
 
 
 
@@ -58,8 +60,11 @@ class ResumePage extends React.Component<ResumePage.Props, ResumePage.State> {
 
     this.state = {
       rolesStyle: ResumePage.RolesStyle.Compressed,
+      size: undefined,
     };
   }
+
+  private listener_ = resizeListener(size => this.setState({ size }));
 
   private onRoleClick_ = (id: string) => (event: React.MouseEvent) => {
     this.props.onRoleClick(id);
@@ -71,11 +76,22 @@ class ResumePage extends React.Component<ResumePage.Props, ResumePage.State> {
     });
   };
 
+  private containerRef_: HTMLDivElement;
+  private bindContainerRef_ = (ref: HTMLDivElement) => {
+    if (this.containerRef_) this.listener_.unobserve(this.containerRef_);
+    this.containerRef_ = ref;
+    if (this.containerRef_) this.listener_.observe(this.containerRef_);
+  };
+
+  componentWillUnmount() {
+    this.listener_.disconnect();
+  }
+
   render() {
     const { props, state } = this;
     const { resume, roles, education } = props;
     const { about, contacts, skills } = resume;
-    const { rolesStyle } = state;
+    const { rolesStyle, size } = state;
 
     const roleModels: RoleModel[] = resume.roleIds.map(id => roles[id]);
     roleModels.sort(descending);
@@ -89,43 +105,79 @@ class ResumePage extends React.Component<ResumePage.Props, ResumePage.State> {
       onChange: this.onRolesStyleChange_,
     });
 
-    return (
-      <Container>
-        <Left>
-          <Section title='Hi! 👋'>
-            <Markdown>{about}</Markdown>
-          </Section>
-          <Section title='Roles' right={rolesRight}>
-            {roleModels.map(role => (
-              <Role
-                key={role.id}
-                role={role}
-                onClick={this.onRoleClick_(role.id)}
-                mini={rolesStyle === ResumePage.RolesStyle.Compressed}
-              />
-            ))}
-          </Section>
-          <Section title='Education'>
-            {educationModels.map(education => (
-              <Education
-                key={education.id}
-                education={education}
-              />
-            ))}
-          </Section>
-        </Left>
-        <Right>
-          <Section title='Contact'>
-            {contacts.map((contact, i) => (
-              <Contact key={i} contact={contact} />
-            ))}
-          </Section>
-          <Section title='Skills'>
-            <Skills skills={skills.expert} />
-          </Section>
-        </Right>
-      </Container>
+    const aboutSection = (
+      <Section title='Hi! 👋'>
+        <Markdown>{about}</Markdown>
+      </Section>
     );
+
+    const rolesSection = (
+      <Section title='Roles' right={rolesRight}>
+        {roleModels.map(role => (
+          <Role
+            key={role.id}
+            role={role}
+            onClick={this.onRoleClick_(role.id)}
+            mini={rolesStyle === ResumePage.RolesStyle.Compressed}
+          />
+        ))}
+      </Section>
+    );
+
+    const educationSection = (
+      <Section title='Education'>
+        {educationModels.map(education => (
+          <Education
+            key={education.id}
+            education={education}
+          />
+        ))}
+      </Section>
+    );
+
+    const contactSection = (
+      <Section title='Contact'>
+        {contacts.map((contact, i) => (
+          <Contact key={i} contact={contact} />
+        ))}
+      </Section>
+    );
+
+    const skillsSection = (
+      <Section title='Skills'>
+        <Skills skills={skills.expert} />
+      </Section>
+    );
+
+    const width = size ? size.x : window.innerWidth;
+
+    if (width > 900) {
+      return (
+        <Container ref={this.bindContainerRef_}>
+          <Left>
+            {aboutSection}
+            {rolesSection}
+            {educationSection}
+          </Left>
+          <Right>
+            {contactSection}
+            {skillsSection}
+          </Right>
+        </Container>
+      );
+    } else {
+      return (
+        <Container ref={this.bindContainerRef_}>
+          <Left>
+            {aboutSection}
+            {contactSection}
+            {rolesSection}
+            {educationSection}
+            {skillsSection}
+          </Left>
+        </Container>
+      );
+    }
   }
 }
 
@@ -150,6 +202,7 @@ namespace ResumePage {
   }
 
   export interface State {
+    size?: Vector2;
     rolesStyle: RolesStyle;
   }
 

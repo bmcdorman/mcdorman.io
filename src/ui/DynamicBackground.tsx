@@ -32,7 +32,7 @@ const Svg = styled('svg', {
 
 const BASE_COLOR: Vector3 = { x: 0x8d, y: 0x02, z: 0x1f };
 
-class DynamicBackground extends React.Component<DynamicBackground.Props, DynamicBackground.State> {
+class DynamicBackground extends React.PureComponent<DynamicBackground.Props, DynamicBackground.State> {
   constructor(props: DynamicBackground.Props) {
     super(props);
 
@@ -137,7 +137,7 @@ class DynamicBackground extends React.Component<DynamicBackground.Props, Dynamic
 
     
 
-    const jiggle = 1 / (2 ** (subdivisions + 1)) * 0.8;
+    const jiggle = 1 / (2 ** (subdivisions + 1)) * 0.5;
 
     const currentVertices = [ ...startVertices ];
     
@@ -160,8 +160,8 @@ class DynamicBackground extends React.Component<DynamicBackground.Props, Dynamic
       startVertices,
       currentVertices,
       velocities: uniqueVertices.map(() => Vector3.create(
-        Math.random() * 0.005 - 0.0025,
-        Math.random() * 0.005 - 0.0025,
+        Math.random() * 0.01 - 0.005,
+        Math.random() * 0.01 - 0.005,
         Math.random() * 0.05 - 0.025,
       )),
       maxDelta: Vector3.create(jiggle, jiggle, 1),
@@ -250,12 +250,25 @@ class DynamicBackground extends React.Component<DynamicBackground.Props, Dynamic
 
               const rgb = Vector3.add(BASE_COLOR, Vector3.multiplyScalar(normal, 10));
 
+              const red = Math.round(Math.max(0, Math.min(255, rgb.x)));
+              const green = Math.round(Math.max(0, Math.min(255, rgb.y)));
+              const blue = Math.round(Math.max(0, Math.min(255, rgb.z)));
+
+              const aX = Math.round(vA.x * 10) / 10;
+              const aY = Math.round(vA.y * 10) / 10;
+
+              const bX = Math.round(vB.x * 10) / 10;
+              const bY = Math.round(vB.y * 10) / 10;
+
+              const cX = Math.round(vC.x * 10) / 10;
+              const cY = Math.round(vC.y * 10) / 10;
+
               return (
                 <polygon
                   key={i}
-                  points={`${vA.x},${vA.y} ${vB.x},${vB.y} ${vC.x},${vC.y}`}
-                  fill={`rgb(${rgb.x}, ${rgb.y}, ${rgb.z})`}
-                  stroke={`rgb(${rgb.x}, ${rgb.y}, ${rgb.z})`}
+                  points={`${aX},${aY} ${bX},${bY} ${cX},${cY}`}
+                  fill={`rgb(${red}, ${green}, ${blue})`}
+                  stroke={`rgb(${red}, ${green}, ${blue})`}
                 />
               );
             })}
