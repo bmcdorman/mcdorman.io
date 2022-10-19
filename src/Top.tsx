@@ -10,15 +10,18 @@ const Container = styled('div', {
   flexDirection: 'row',
   width: '100%',
   fontSize: '1.5em',
-  padding: '0.5rem',
+  paddingTop: '1rem',
+  paddingLeft: '1rem',
+  paddingRight: '1rem',
   color: 'white',
+  alignItems: 'center'
 });
 
 const Title = styled('div', {
   display: 'inline-block',
   fontWeight: 500,
   cursor: 'pointer',
-  padding: '0.5rem',
+  marginRight: '0.5rem',
 });
 
 const Button = styled('div', {
@@ -26,12 +29,20 @@ const Button = styled('div', {
   fontWeight: 300,
   height: '100%',
   cursor: 'pointer',
-  borderRadius: '0.5rem',
+  margin: '-0.5rem',
   padding: '0.5rem',
   ':hover': {
     backgroundColor: 'rgba(0, 0, 0, 0.1)',
   },
+  marginLeft: '1.5rem',
   transition: 'background-color 0.2s',
+});
+
+const Sep = styled('div', {
+  display: 'inline-block',
+  marginLeft: '1.5rem',
+  borderLeft: '1px solid rgba(255, 255, 255, 0.5)',
+  height: '1.5rem',
 });
 
 class Top extends React.Component<Top.Props> {
@@ -40,7 +51,7 @@ class Top extends React.Component<Top.Props> {
     return (
       <Container>
         <Title onClick={props.onHomeClick}>Braden McDorman</Title>
-        <FlexSpacer />
+        <Sep />
         <Button onClick={props.onResumeClick}>Resume</Button>
       </Container>
     );
