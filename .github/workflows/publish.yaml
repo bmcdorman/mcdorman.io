@@ -15,6 +15,9 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: Build bundle
+        run: yarn parcel build src/index.html
+
       - name: Publish generated content to GitHub Pages
         uses: tsunematsu21/actions-publish-gh-pages@v1.0.2
         with:

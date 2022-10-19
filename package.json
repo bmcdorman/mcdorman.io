@@ -2,7 +2,6 @@
   "name": "website",
   "version": "1.0.0",
   "description": "Braden McDorman's personal website",
-  "main": "index.js",
   "author": "Braden McDorman",
   "license": "AGPLv3",
   "private": true,
