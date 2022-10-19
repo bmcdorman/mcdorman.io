@@ -1,1 +1,1 @@
-Received the prestigious NSF Graduate Research Fellowship and pursued a PhD in Computer Science. Left the PhD program **without receiving a degree** to pursue Semio, a robotics startup, fulltime.
+Received the prestigious NSF Graduate Research Fellowship and pursued a PhD in Computer Science. Left the PhD program to pursue Semio, a robotics startup I co-founded, full-time.

@@ -7,7 +7,7 @@ import Location from '../../../model/Location';
 
 export default {
   id: 'usc-phd-cs',
-  name: 'Ph.D. in Computer Science',
+  name: 'Ph.D. in Computer Science - Incomplete',
   organizationRef: OrganizationRef.school('usc'),
   location: {
     type: Location.Type.Onsite,
