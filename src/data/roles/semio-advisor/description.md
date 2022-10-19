@@ -1,0 +1,1 @@
+Advising founder and technical team on technologies applicable to Semio's diverse range of software products.

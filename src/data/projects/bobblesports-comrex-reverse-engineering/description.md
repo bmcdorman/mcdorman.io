@@ -1,0 +1,3 @@
+Clean-room reverse engineering of the proprietary [COMREX](https://www.comrex.com/) audio protocol to allow Bobble Sports' cloud software to push audio data directly to COMREX audio equipment.
+
+Achieved by tricking a COMREX audio device to connect to itself via custom UDP packet redirection software. Packets could be then be stored and analyzed, with the custom software slowly taking over more and more of the connection handshake and data streaming.

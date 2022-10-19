@@ -1,0 +1,4 @@
+yarn-error.log
+.parcel-cache
+node_modules
+dist

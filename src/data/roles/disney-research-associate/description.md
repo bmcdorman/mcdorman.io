@@ -1,0 +1,1 @@
+The result of this work, titled "Towards Robot Autonomy in Group Conversations: Understanding the Effects of Body Orientation and Gaze", was published in March 2017 in the Proceedings of the Human Robot Interaction (HRI) 2017 conference.

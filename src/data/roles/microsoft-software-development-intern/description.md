@@ -1,0 +1,1 @@
+Interned on the Windows Driver Frameworks team. Worked on exciting and experimental technology initiatives being undertaken by the "new" and more open Microsoft.

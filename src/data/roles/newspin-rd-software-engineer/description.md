@@ -1,0 +1,1 @@
+Worked on point cloud mapping and localization technologies for consumer-grade depth sensors such as the Microsoft Kinect and ASUS Xtion. Utilized GPU computing to perform massive data queries in close to realtime.
