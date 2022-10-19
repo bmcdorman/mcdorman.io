@@ -16,7 +16,9 @@ const Container = styled('div', {
 const StyledSwiper = styled(Swiper, {
   height: '100px',
   width: '100%',
-  backgroundColor: 'white',
+  borderRadius: '0.5rem',
+  border: '1px solid #ccc',
+  backgroundColor: 'rgb(255, 255, 255)',
 });
 
 class HomePage extends React.Component<Props> {

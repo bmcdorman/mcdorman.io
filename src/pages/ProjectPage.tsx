@@ -22,7 +22,9 @@ type Props = ProjectPagePublicProps & ProjectPagePrivateProps;
 
 const Container = styled('div', {
   padding: '1rem',
-  backgroundColor: 'white',
+  borderRadius: '0.5rem',
+  border: '1px solid #ccc',
+  backgroundColor: 'rgb(255, 255, 255)',
 });
 
 class ProjectPage extends React.Component<Props> {
