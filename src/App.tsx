@@ -25,6 +25,7 @@ class App extends React.Component {
   render() {
     return (
       <Container>
+        <DynamicBackground />
         <Top />
         <Switch>
           <Route path='/company/:id' component={CompanyPage} />

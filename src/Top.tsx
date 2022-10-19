@@ -11,6 +11,7 @@ const Container = styled('div', {
   width: '100%',
   fontSize: '1.5em',
   padding: '0.5rem',
+  color: 'white',
 });
 
 const Title = styled('div', {

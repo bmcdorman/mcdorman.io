@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { styled } from 'styletron-react';
+import { styled, withStyleDeep } from 'styletron-react';
 import Contact from '../Contact';
 import ResumeModel from '../model/Resume';
 import RoleModel from '../model/Role';
@@ -33,16 +33,20 @@ const Container = styled('div', {
   padding: '1rem',
 });
 
-const Left = styled('div', {
-  flex: 4,
-  display: 'flex',
-  flexDirection: 'column'
-});
-
-const Right = styled('div', {
-  flex: 1,
+const Float = styled('div', {
   display: 'flex',
   flexDirection: 'column',
+  borderRadius: '0.5rem',
+  border: '1px solid #ccc',
+  backgroundColor: 'rgb(255, 255, 255)',
+});
+
+const Left = withStyleDeep(Float, {
+  flex: 4,
+});
+
+const Right = withStyleDeep(Float, {
+  flex: 1,
   marginLeft: '1rem',
 });
 
@@ -88,7 +92,7 @@ class ResumePage extends React.Component<ResumePage.Props, ResumePage.State> {
     return (
       <Container>
         <Left>
-          <Section title='About'>
+          <Section title='Hi! 👋'>
             <Markdown>{about}</Markdown>
           </Section>
           <Section title='Roles' right={rolesRight}>

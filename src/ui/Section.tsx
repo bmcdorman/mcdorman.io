@@ -31,7 +31,7 @@ const Container = styled('div', {
     marginTop: 0,
   },
   ':not(:last-child)': {
-    borderBottom: '1px solid rgba(0, 0, 0, 0.2)',
+    borderBottom: '1px solid #ccc',
   }
 });
 

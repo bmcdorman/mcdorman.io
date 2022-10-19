@@ -19,5 +19,7 @@ export const ItemTop = styled('div', {
   flexDirection: 'row',
   fontSize: '1.2em',
   alignItems: 'center',
-  marginBottom: '1rem',
+  ':not(:last-child)': {
+    marginBottom: '1rem',
+  }
 });
