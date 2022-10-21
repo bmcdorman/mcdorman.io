@@ -5,6 +5,9 @@ import { styled } from 'styletron-react';
 import State from './State';
 import { FlexSpacer } from './style';
 
+import { FontAwesomeIcon as Icon, FontAwesomeIconProps as IconProps } from '@fortawesome/react-fontawesome';
+import { faPersonDigging } from '@fortawesome/free-solid-svg-icons';
+
 const Container = styled('div', {
   display: 'flex',
   flexDirection: 'row',
@@ -38,6 +41,11 @@ const Sep = styled('div', {
   margin: '1rem',
 });
 
+const UnderConstructionNotice = styled('div', {
+  display: 'inline-block',
+  fontSize: '0.8em',
+});
+
 class Top extends React.Component<Top.Props> {
   render() {
     const { props } = this;
@@ -46,6 +54,8 @@ class Top extends React.Component<Top.Props> {
         <Title onClick={props.onHomeClick}>Braden McDorman</Title>
         <Sep />
         <Button onClick={props.onResumeClick}>Resume</Button>
+        <FlexSpacer />
+        <UnderConstructionNotice><Icon icon={faPersonDigging} /> This website is under construction</UnderConstructionNotice>
       </Container>
     );
   }
