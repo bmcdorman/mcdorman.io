@@ -1,0 +1,1 @@
+Researched and developed OS X and iPad apps to aid physicians in quickly diagnosing patients and organizing MRI data. Worked with medical students and physicians to address their needs. Developed experimental android apps to control assistance devices (such as wheelchairs) through head movement.

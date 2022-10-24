@@ -1,0 +1,1 @@
+Worked on transparently supporting WebSockets in a JavaScript-based Java VM called Doppio. Also worked on supporting WebSockets transparently in unmodified TCP servers running on the HotSpot VM. This allowed a Java developer to wrap both their server and client with WebSocket support with zero binary modification.

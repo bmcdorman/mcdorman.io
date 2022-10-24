@@ -53,15 +53,17 @@ class RolePage extends React.Component<Props> {
         <Section title='Role'>
           <Role role={role} />
         </Section>
-        <Section title={`Projects while ${role.name}${organization ? ` at ${OrganizationModel.name(organization)}` : ''}`}>
-          {projects.map((project) => (
-            <Project
-              key={project.id}
-              project={project}
-              onClick={this.onProjectClick_(project.id)}
-            />
-          ))}
-        </Section>
+        {projects.length !== 0 && (
+          <Section title={`Projects while ${role.name}${organization ? ` at ${OrganizationModel.name(organization)}` : ''}`}>
+            {projects.map(project => (
+              <Project
+                key={project.id}
+                project={project}
+                onClick={this.onProjectClick_(project.id)}
+              />
+            ))}
+          </Section>
+        )}
       </PageContainer>
     );
   }
@@ -71,7 +73,7 @@ export default connect((state: State, { match: { params: { id } } }: RolePagePub
   const role = state.roles[id];
   return {
     role,
-    company: role.organizationRef !== undefined
+    origanization: role.organizationRef !== undefined
       ? OrganizationRef.resolve(role.organizationRef, state)
       : undefined,
     projects: Object.values(state.projects)

@@ -32,7 +32,6 @@ import Vector2 from '../math/Vector2';
 const Container = styled('div', {
   display: 'flex',
   flexDirection: 'row',
-  padding: '1rem',
 });
 
 const Float = styled('div', {

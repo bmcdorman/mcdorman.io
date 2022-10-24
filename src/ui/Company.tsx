@@ -7,6 +7,10 @@ import CompanyModel from '../model/Company';
 import State from '../State';
 import { FlexSpacer } from '../style';
 
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
+import { faLink } from '@fortawesome/free-solid-svg-icons';
+import Link from './Link';
+
 import Markdown from '../ui/Markdown';
 
 const Container = styled('div', {
@@ -19,11 +23,8 @@ const Top = styled('div', {
   fontSize: '1.5em',
 });
 
-const DetailTop = styled('div', {
-  display: 'flex',
-  flexDirection: 'row',
-  fontSize: '1.2em',
-  opacity: 0.5,
+const Detail = styled('div', {
+  fontSize: '1rem',
 });
 
 const Name = styled('div', {
@@ -49,7 +50,12 @@ class Company extends React.Component<Company.Props> {
         <Top>
           <Info>
             <Name>{name}</Name>
-            {url ? <a href={url} target="_blank" rel="noopener noreferrer">Website</a> : null}
+            {url && (
+              <Detail>
+                <Link href={url} target="_blank" rel="noopener noreferrer"><Icon icon={faLink} /> Website</Link>
+              </Detail>
+            )}
+
           </Info>
           <FlexSpacer />
           {company.logoUri ? <Image src={company.logoUri} /> : null}

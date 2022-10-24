@@ -6,14 +6,10 @@ import description from 'bundle-text:./description.md';
 import OrganizationRef from '../../../model/OrganizationRef';
 
 export default {
-  id: 'kipr-software-engineer',
-  name: 'Software Engineer',
-  organizationRef: OrganizationRef.company('kipr'),
-  startDate: '2011-06-01',
-  endDate: '2014-02-01',
-  location: {
-    type: Location.Type.Onsite,
-    location: 'Norman, OK',
-  },
+  id: 'ouhsc-student-researcher',
+  name: 'Student Researcher',
+  startDate: '2011-08-01',
+  endDate: '2012-05-01',
+  location: Location.REMOTE,
   description,
 } as Role;

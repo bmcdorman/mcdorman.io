@@ -33,25 +33,29 @@ class CompanyPage extends React.Component<CompanyPage.Props> {
         <Section title='Company'>
           <Company company={company} />
         </Section>
-        <Section title={`Roles at ${company.name}`}>
-          {roles.map((role) => (
-            <Role
-              key={role.id}
-              role={role}
-              hideOrganization
-              onClick={this.onRoleClick_(role.id)}
-            />
-          ))}
-        </Section>
-        <Section title={`Projects at ${company.name}`}>
-          {projects.map(project => (
-            <Project
-              key={project.id}
-              project={project}
-              onClick={this.onProjectClick_(project.id)}
-            />
-          ))}
-        </Section>
+        {roles.length !== 0 && (
+          <Section title={`Roles at ${company.name}`}>
+            {roles.map((role) => (
+              <Role
+                key={role.id}
+                role={role}
+                hideOrganization
+                onClick={this.onRoleClick_(role.id)}
+              />
+            ))}
+          </Section>
+        )}
+        {projects.length !== 0 && (
+          <Section title={`Projects at ${company.name}`}>
+            {projects.map(project => (
+              <Project
+                key={project.id}
+                project={project}
+                onClick={this.onProjectClick_(project.id)}
+              />
+            ))}
+          </Section>
+        )}
       </PageContainer>
     );
   }

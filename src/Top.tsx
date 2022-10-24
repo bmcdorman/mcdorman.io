@@ -14,8 +14,6 @@ const Container = styled('div', {
   width: '100%',
   fontSize: '1.5em',
   paddingTop: '1rem',
-  paddingLeft: '1rem',
-  paddingRight: '1rem',
   color: 'white',
   alignItems: 'center'
 });

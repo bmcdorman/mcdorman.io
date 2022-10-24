@@ -9,18 +9,28 @@ import kiprTacMember from './kipr-tac-member';
 import bobblesportsAdvisor from './bobblesports-advisor';
 import newspinRdSoftwareEngineer from './newspin-rd-software-engineer';
 import semioAdvisor from './semio-advisor';
+import plasmaUmassGsoc from './plasma-umass-gsoc';
+import ouhscStudentResearcher from './ouhsc-student-researcher';
+import ouTa from './ou-ta';
+import ouRa from './ou-ra';
 
-export default {
-  [semioCofounderCto.id]: semioCofounderCto,
-  [semioAdvisor.id]: semioAdvisor,
-  [microsoftSoftwareDevelopmentIntern.id]: microsoftSoftwareDevelopmentIntern,
-  [kiprBoardMember.id]: kiprBoardMember,
-  [disneyResearchAssociate.id]: disneyResearchAssociate,
-  [kiprLeadSoftwareEngineer.id]: kiprLeadSoftwareEngineer,
-  [kiprSoftwareEngineer.id]: kiprSoftwareEngineer,
-  [kiprSoftwareIntern.id]: kiprSoftwareIntern,
-  [bobblesportsAdvisor.id]: bobblesportsAdvisor,
-  [newspinRdSoftwareEngineer.id]: newspinRdSoftwareEngineer,
-  [kiprTacMember.id]: kiprTacMember,
 
-};
+import bundle from '../bundle';
+
+export default bundle([
+  semioCofounderCto,
+  microsoftSoftwareDevelopmentIntern,
+  kiprBoardMember,
+  disneyResearchAssociate,
+  kiprSoftwareEngineer,
+  kiprLeadSoftwareEngineer,
+  kiprSoftwareIntern,
+  kiprTacMember,
+  bobblesportsAdvisor,
+  newspinRdSoftwareEngineer,
+  semioAdvisor,
+  plasmaUmassGsoc,
+  ouhscStudentResearcher,
+  ouTa,
+  ouRa,
+]);
