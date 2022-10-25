@@ -13,6 +13,7 @@ import Role from '../ui/Role';
 import Section from '../ui/Section';
 import { push } from 'connected-react-router';
 import { descending } from '../model/sort';
+import Page from '../ui/Page';
 
 const Container = styled('div', {
   padding: '1rem',
@@ -33,7 +34,7 @@ class SchoolPage extends React.Component<SchoolPage.Props> {
     const { school, roles, projects } = props;
 
     return (
-      <Container>
+      <Page title={school.name}>
         <Section title='School'>
           <School school={school} />
         </Section>
@@ -56,7 +57,7 @@ class SchoolPage extends React.Component<SchoolPage.Props> {
             />
           ))}
         </Section>
-      </Container>
+      </Page>
     );
   }
 }

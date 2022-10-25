@@ -4,6 +4,7 @@ import { RouteComponentProps } from 'react-router';
 import { styled } from 'styletron-react';
 import ProjectModel from '../model/Project';
 import State from '../State';
+import Page from '../ui/Page';
 import Project from '../ui/Project';
 import Section from '../ui/Section';
 import { PageContainer } from './common';
@@ -27,11 +28,11 @@ class ProjectPage extends React.Component<Props> {
     const { project } = props;
 
     return (
-      <PageContainer>
+      <Page title={project.name}>
         <Section title='Project'>
           <Project project={project} />
         </Section>
-      </PageContainer>
+      </Page>
     );
   }
 }

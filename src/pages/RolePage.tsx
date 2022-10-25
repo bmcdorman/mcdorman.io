@@ -15,6 +15,7 @@ import OrganizationModel from '../model/Organization';
 import OrganizationRef from '../model/OrganizationRef';
 import { StyleProps } from '../style';
 import { PageContainer } from './common';
+import Page from '../ui/Page';
 
 export interface RolePageParams {
   id: string;
@@ -49,7 +50,11 @@ class RolePage extends React.Component<Props> {
     } = props;
 
     return (
-      <PageContainer className={className} style={style}>
+      <Page
+        className={className}
+        style={style}
+        title={role.name}
+      >
         <Section title='Role'>
           <Role role={role} />
         </Section>
@@ -64,7 +69,7 @@ class RolePage extends React.Component<Props> {
             ))}
           </Section>
         )}
-      </PageContainer>
+      </Page>
     );
   }
 }
