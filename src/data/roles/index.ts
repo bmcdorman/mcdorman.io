@@ -4,7 +4,6 @@ import kiprBoardMember from './kipr-board-member';
 import disneyResearchAssociate from './disney-research-associate';
 import kiprSoftwareEngineer from './kipr-software-engineer';
 import kiprLeadSoftwareEngineer from './kipr-lead-software-engineer';
-import kiprSoftwareIntern from './kipr-software-intern';
 import kiprTacMember from './kipr-tac-member';
 import bobblesportsAdvisor from './bobblesports-advisor';
 import newspinRdSoftwareEngineer from './newspin-rd-software-engineer';
@@ -24,7 +23,6 @@ export default bundle([
   disneyResearchAssociate,
   kiprSoftwareEngineer,
   kiprLeadSoftwareEngineer,
-  kiprSoftwareIntern,
   kiprTacMember,
   bobblesportsAdvisor,
   newspinRdSoftwareEngineer,
