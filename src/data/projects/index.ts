@@ -2,10 +2,14 @@ import bobblesportsComrexReverseEngineering from './bobblesports-comrex-reverse-
 import kiprLink from './kipr-link';
 import kiprWombat from './kipr-wombat';
 import kiprWallaby from './kipr-wallaby';
+import semioStudio from './semio-studio';
 
-export default {
-  [bobblesportsComrexReverseEngineering.id]: bobblesportsComrexReverseEngineering,
-  [kiprLink.id]: kiprLink,
-  [kiprWombat.id]: kiprWombat,
-  [kiprWallaby.id]: kiprWallaby,
-};
+import bundle from '../bundle';
+
+export default bundle([
+  bobblesportsComrexReverseEngineering,
+  kiprLink,
+  kiprWombat,
+  kiprWallaby,
+  semioStudio,
+]);
