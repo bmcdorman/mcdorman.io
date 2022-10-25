@@ -16,7 +16,7 @@ jobs:
         run: yarn install
 
       - name: Build bundle
-        run: yarn parcel build src/index.html
+        run: yarn run bundle
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4

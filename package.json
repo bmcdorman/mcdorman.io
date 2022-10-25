@@ -5,6 +5,10 @@
   "author": "Braden McDorman",
   "license": "AGPLv3",
   "private": true,
+  "scripts": {
+    "watch": "yarn parcel src/index.html",
+    "bundle": "yarn parcel build src/index.html"
+  },
   "devDependencies": {
     "@parcel/transformer-inline-string": "2.7.0",
     "@parcel/transformer-sass": "2.7.0",
