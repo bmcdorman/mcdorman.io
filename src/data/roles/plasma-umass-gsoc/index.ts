@@ -10,6 +10,7 @@ export default {
   name: 'Google Summer of Code Student',
   startDate: '2013-06-01',
   endDate: '2013-09-01',
+  organizationRef: OrganizationRef.company('plasma-umass'),
   location: Location.REMOTE,
   description,
 } as Role;

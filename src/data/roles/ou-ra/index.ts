@@ -10,6 +10,7 @@ export default {
   name: 'Research Assistant',
   startDate: '2013-08-01',
   endDate: '2014-01-01',
+  organizationRef: OrganizationRef.school('ou'),
   location: {
     type: Location.Type.Onsite,
     location: 'Norman, OK',

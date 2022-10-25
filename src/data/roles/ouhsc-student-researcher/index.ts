@@ -10,6 +10,10 @@ export default {
   name: 'Student Researcher',
   startDate: '2011-08-01',
   endDate: '2012-05-01',
-  location: Location.REMOTE,
+  organizationRef: OrganizationRef.school('ouhsc'),
+  location: {
+    type: Location.Type.Onsite,
+    location: 'Oklahoma City, OK',
+  },
   description,
 } as Role;

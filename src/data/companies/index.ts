@@ -4,12 +4,17 @@ import microsoft from './microsoft';
 import semio from './semio';
 import bobblesports from './bobblesports';
 import newspin from './newspin';
+import plasmaUmass from './plasma-umass';
 
-export default {
-  [disneyResearch.id]: disneyResearch,
-  [kipr.id]: kipr,
-  [microsoft.id]: microsoft,
-  [semio.id]: semio,
-  [bobblesports.id]: bobblesports,
-  [newspin.id]: newspin,
-};
+import bundle from '../bundle';
+
+
+export default bundle([
+  disneyResearch,
+  kipr,
+  microsoft,
+  semio,
+  bobblesports,
+  newspin,
+  plasmaUmass,
+]);

@@ -1,9 +1,13 @@
 import usc from './usc';
 import ou from './ou';
 import ossm from './ossm';
+import ouhsc from './ouhsc';
 
-export default {
-  [usc.id]: usc,
-  [ou.id]: ou,
-  [ossm.id]: ossm,
-};
+import bundle from '../bundle';
+
+export default bundle([
+  usc,
+  ou,
+  ossm,
+  ouhsc
+])

@@ -1,0 +1,1 @@
+The award-winning PLASMA group, led by Professors Emery Berger, Yuriy Brun, and Hui Guan, does cool stuff that matters. We work on a variety of exciting topics that span programming languages, software engineering, and systems.

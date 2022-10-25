@@ -49,7 +49,8 @@ const CompanyName = styled('div', {
 });
 
 const Image = styled('img', {
-  height: '2.5em',
+  width: '2.5em',
+  
 });
 
 const Dates = styled('div', {
@@ -90,7 +91,11 @@ class Role extends React.Component<Props> {
           <Info>
             <Name>{name}</Name>
             {organization && !hideOrganization && (
-              <CompanyName onClick={this.onOrganizationClick_(role.organizationRef!)}>{OrganizationModel.name(organization)}</CompanyName>
+              <CompanyName
+                onClick={this.onOrganizationClick_(role.organizationRef!)}
+              >
+                {OrganizationModel.name(organization)}
+              </CompanyName>
             )}
             <Dates>
               {toHumanMonthYear(startDate)} to {endDate ? toHumanMonthYear(endDate) : 'Present'}
@@ -98,7 +103,9 @@ class Role extends React.Component<Props> {
             
             {location ? (
               <LocationContainer>
-                {location.type === Location.Type.Remote ? 'Remote' : location.location}
+                {location.type === Location.Type.Remote
+                  ? 'Remote'
+                  : location.location}
               </LocationContainer>
             ) : null}
             
@@ -112,7 +119,7 @@ class Role extends React.Component<Props> {
             </Company>
           )}
         </ItemTop>
-        {description && !mini && <Markdown >{description}</Markdown>}
+        {description && !mini && <Markdown>{description}</Markdown>}
       </ItemContainer>
     );
   }

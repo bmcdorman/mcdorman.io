@@ -20,9 +20,14 @@ const Container = styled('div', {
 
 const OptionContainer = styled('div', ({ $selected }: { $selected: boolean }) => ({
   cursor: 'pointer',
-  backgroundColor: $selected ? 'rgba(0, 0, 0, 0.1)' : 'transparent',
-  padding: '0.5rem',
-  borderRadius: '0.5rem',
+  opacity: $selected ? 1.0 : 0.5,
+  ':hover': {
+    opacity: 1.0,
+  },
+  transition: 'opacity 0.2s',
+  ':not(:last-child)': {
+    marginRight: '0.5rem',
+  },
 }));
 
 class OneOf extends React.Component<Props> {

@@ -15,7 +15,10 @@ const Container = styled('div', {
   fontSize: '1.5em',
   paddingTop: '1rem',
   color: 'white',
-  alignItems: 'center'
+  alignItems: 'center',
+  '@media (max-width: 900px)': {
+    fontSize: '1.1em',
+  }
 });
 
 const Title = styled('div', {
