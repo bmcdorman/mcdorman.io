@@ -6,6 +6,7 @@ import Contact from '../Contact';
 import ResumeModel from '../model/Resume';
 import RoleModel from '../model/Role';
 import Section from '../ui/Section';
+import Subsection from '../ui/Subsection';
 import State from '../State';
 
 import Markdown from '../ui/Markdown';
@@ -37,18 +38,28 @@ const Container = styled('div', {
 const Float = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  borderRadius: '0.5rem',
-  border: '1px solid #ccc',
+  ':first-child': {
+    borderTopLeftRadius: '1rem',
+    borderBottomLeftRadius: '1rem',
+    borderLeft: '1px solid #ccc',
+  },
+  ':last-child': {
+    borderTopRightRadius: '1rem',
+    borderBottomRightRadius: '1rem',
+  },
+  // if not last child, add a border to the right
+  borderRight: '1px solid #ccc',
+  borderTop: '1px solid #ccc',
+  borderBottom: '1px solid #ccc',
   backgroundColor: 'rgb(255, 255, 255)',
 });
 
 const Left = withStyleDeep(Float, {
-  flex: 4,
+  flex: 5,
 });
 
 const Right = withStyleDeep(Float, {
-  flex: 1,
-  marginLeft: '1rem',
+  flex: 2,
 });
 
 
@@ -143,8 +154,22 @@ class ResumePage extends React.Component<ResumePage.Props, ResumePage.State> {
     );
 
     const skillsSection = (
-      <Section title='Skills'>
-        <Skills skills={skills.expert} />
+      <Section title='Experience'>
+        {skills.expert && (
+          <Subsection title='> 10 years'>
+            <Skills skills={skills.expert} />
+          </Subsection>
+        )}
+        {skills.proficient && (
+          <Subsection title='> 5 years'>
+            <Skills skills={skills.proficient} />
+          </Subsection>
+        )}
+        {skills.familiar && (
+          <Subsection title='> 2 years'>
+            <Skills skills={skills.familiar} />
+          </Subsection>
+        )}
       </Section>
     );
 

@@ -4,6 +4,11 @@ enum ProgrammingLanguage {
   C = 'c',
   CPlusPlus = 'c++',
   Rust = 'rust',
+  Html = 'html',
+  Css = 'css',
+  Python = 'python',
+  Java = 'java',
+  Latex = 'latex',
 }
 
 namespace ProgrammingLanguage {
@@ -19,6 +24,16 @@ namespace ProgrammingLanguage {
         return 'C++';
       case ProgrammingLanguage.Rust:
         return 'Rust';
+      case ProgrammingLanguage.Html:
+        return 'HTML';
+      case ProgrammingLanguage.Css:
+        return 'CSS';
+      case ProgrammingLanguage.Python:
+        return 'Python';
+      case ProgrammingLanguage.Java:
+        return 'Java';
+      case ProgrammingLanguage.Latex:
+        return 'LaTeX';
     }
   };
 }

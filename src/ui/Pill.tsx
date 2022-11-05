@@ -1,8 +1,10 @@
 import { styled } from 'styletron-react';
+import Rgba from '../math/Rgba';
 
-export default styled('span', {
-  padding: '0.2em',
-  borderRadius: '0.5em',
-  margin: '0.2em',
-  backgroundColor: 'rgba(0, 0, 0, 0.1)',
-});
+export default styled('span', ({ $backgroundColor }: { $backgroundColor: Rgba }) => ({
+  padding: '0.5rem',
+  borderRadius: '1rem',
+  margin: '0.1rem',
+  backgroundColor: Rgba.toCss($backgroundColor),
+  color: 'white',
+}));

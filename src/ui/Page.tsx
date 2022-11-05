@@ -3,7 +3,7 @@ import { styled } from 'styletron-react';
 import { StyleProps } from '../style';
 
 export const Container = styled('div', {
-  borderRadius: '0.5rem',
+  borderRadius: '1rem',
   border: '1px solid #ccc',
   backgroundColor: 'rgb(255, 255, 255)',
 });
