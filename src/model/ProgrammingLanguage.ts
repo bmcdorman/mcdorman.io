@@ -9,6 +9,7 @@ enum ProgrammingLanguage {
   Python = 'python',
   Java = 'java',
   Latex = 'latex',
+  ObjectiveC = 'objective-c',
 }
 
 namespace ProgrammingLanguage {
@@ -34,6 +35,8 @@ namespace ProgrammingLanguage {
         return 'Java';
       case ProgrammingLanguage.Latex:
         return 'LaTeX';
+      case ProgrammingLanguage.ObjectiveC:
+        return 'Objective-C';
     }
   };
 }

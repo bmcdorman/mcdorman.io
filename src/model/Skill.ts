@@ -32,6 +32,18 @@ namespace Skill {
 
   export const isLibrary = (skill: Skill): skill is Library => skill.type === Type.Library;
 
+  export interface Platform {
+    type: Type.Platform;
+    platform: string;
+  }
+
+  export const platform = (platform: string): Platform => ({
+    type: Type.Platform,
+    platform,
+  });
+
+  export const isPlatform = (skill: Skill): skill is Platform => skill.type === Type.Platform;
+
   export interface Tool {
     type: Type.Tool;
     tool: string;
@@ -48,11 +60,12 @@ namespace Skill {
     switch (skill.type) {
       case Type.ProgrammingLanguage: return ProgrammingLanguageModel.name(skill.programmingLanguage);
       case Type.Library: return skill.library;
+      case Type.Platform: return skill.platform;
       case Type.Tool: return skill.tool;
     }
   };
 }
 
-type Skill = Skill.ProgrammingLanguage | Skill.Library | Skill.Tool;
+type Skill = Skill.ProgrammingLanguage | Skill.Library | Skill.Platform | Skill.Tool;
 
 export default Skill;

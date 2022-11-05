@@ -12,10 +12,10 @@ export default {
   roleIds: Object.keys(roles),
   contacts: [{
     type: 'email',
-    email: 'bmcdorman@gmail.com',
+    email: 'braden@mcdorman.io',
   }, {
     type: 'phone',
-    phone: '405-795-1800',
+    phone: '+1 (405) 795-1800',
   }],
   skills: {
     expert: [
@@ -24,6 +24,8 @@ export default {
       Skill.tool('Git'),
       Skill.tool('CMake'),
       Skill.library('Robot Operating System'),
+      Skill.platform('Linux'),
+      Skill.platform('macOS'),
     ],
     proficient: [
       Skill.programmingLanguage(ProgrammingLanguage.TypeScript),
@@ -35,16 +37,22 @@ export default {
       Skill.tool('Docker'),
       Skill.tool('NoSQL'),
       Skill.tool('Sockets'),
+      Skill.tool('node.js'),
+      Skill.platform('Windows'),
+      Skill.platform('Embedded Linux'),
     ],
     familiar: [
       Skill.programmingLanguage(ProgrammingLanguage.Rust),
       Skill.programmingLanguage(ProgrammingLanguage.Python),
       Skill.programmingLanguage(ProgrammingLanguage.Java),
       Skill.programmingLanguage(ProgrammingLanguage.Latex),
+      Skill.programmingLanguage(ProgrammingLanguage.ObjectiveC),
       Skill.library('tokio'),
       Skill.library('OpenGL'),
       Skill.library('CUDA'),
       Skill.tool('Kubernetes'),
+      Skill.platform('Android'),
+      Skill.platform('iOS'),
     ],
 
   }

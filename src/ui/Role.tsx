@@ -35,7 +35,7 @@ const Info = styled('div', {
 });
 
 const Name = styled('div', {
-  
+  fontWeight: 500
 });
 
 const Company = styled('div', {
