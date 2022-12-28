@@ -11,6 +11,7 @@ import Top from './Top';
 import HomePage from './pages/HomePage';
 import RolePage from './pages/RolePage';
 import SchoolPage from './pages/SchoolPage';
+import StaticResumePage from './pages/StaticResumePage';
 
 interface AppProps {
 

@@ -41,7 +41,8 @@
     "redux": "^4.2.0",
     "styletron": "^3.0.4",
     "styletron-engine-atomic": "^1.5.0",
-    "styletron-react": "^6.1.0"
+    "styletron-react": "^6.1.0",
+    "swiper": "^8.4.5"
   },
   "staticFiles": {
     "staticPath": "static",

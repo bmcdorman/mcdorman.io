@@ -28,4 +28,11 @@ export const toHumanMonthYear = (date: Date): string => {
   const month = MONTHS[adjustedDate.getMonth()];
   const year = adjustedDate.getFullYear();
   return `${month} ${year}`;
-}
+};
+
+export const toCompactHumanMonthYear = (date: Date): string => {
+  const adjustedDate = new Date(date.getTime() + 12 * 60 * 60 * 1000);
+  const month = MONTHS[adjustedDate.getMonth()].slice(0, 3);
+  const year = adjustedDate.getFullYear();
+  return `${month} ${year}`;
+};

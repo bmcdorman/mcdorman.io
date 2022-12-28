@@ -1,0 +1,21 @@
+name: Generate Resume PDF
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v1
+
+      - name: Install dependencies
+        run: node generate-resume-pdf.js
+
+      - name: Deploy 🚀
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: resume.pdf

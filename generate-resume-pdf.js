@@ -20,7 +20,7 @@ const main = async () => {
   const { Page } = protocol;
   await Page.enable();
 
-  Page.navigate({ url: 'http://localhost:1234/resume' });
+  Page.navigate({ url: 'http://localhost:1234/static_resume' });
   Page.loadEventFired(async () => {
     const { data } = await Page.printToPDF({
       scale: 1,
@@ -31,6 +31,7 @@ const main = async () => {
     // Save PDF to disk
     require('fs').writeFileSync('resume.pdf', Buffer.from(data, 'base64'));
     chrome.kill();
+    parcel.kill();
   });
 };
 
