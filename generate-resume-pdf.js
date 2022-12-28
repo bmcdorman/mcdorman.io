@@ -32,6 +32,7 @@ const main = async () => {
     require('fs').writeFileSync('resume.pdf', Buffer.from(data, 'base64'));
     chrome.kill();
     parcel.kill();
+    process.exit(0);
   });
 };
 
