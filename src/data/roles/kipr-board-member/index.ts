@@ -10,6 +10,5 @@ export default {
   name: 'Board Member',
   organizationRef: OrganizationRef.company('kipr'),
   startDate: '2021-04-01',
-  location: Location.REMOTE,
   description,
 } as Role;

@@ -1,0 +1,1 @@
+Helping guide the mission and executive direction of KIPR, a 501(c)3 non-profit, that runs the international Botball Educational Robotics Program, Junior Botball Challenge, and other STEM educational programs for K-12 educators and students, with particular focus on underserved communities.

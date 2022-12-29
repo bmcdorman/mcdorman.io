@@ -1,1 +1,1 @@
-Received B.S. in Computer Science with a minor in Mathematics.
+Received B.S. in Computer Science with a minor in Mathematics. Head instructor and curriculum developer for the Computer Science Interview Preparation club. Software lead on university's NASA University Rover Challenge team. Selected participant in DARPA Virtual Robotics Challenge.

@@ -26,6 +26,15 @@ namespace Organization {
     }
   };
 
+  export const shorthand = (organization: Organization): string => {
+    switch (organization.type) {
+      case Type.Company:
+        return organization.company.shorthand || organization.company.name;
+      case Type.School:
+        return organization.school.name;
+    }
+  };
+
   export const logoUri = (organization: Organization): string | undefined => {
     switch (organization.type) {
       case Type.Company:

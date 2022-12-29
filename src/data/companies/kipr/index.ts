@@ -9,6 +9,7 @@ import description from 'bundle-text:./description.md';
 export default {
   id: 'kipr',
   name: 'KISS Institute for Practical Robotics',
+  shorthand: 'KIPR',
   url: 'https://www.kipr.org/',
   logoUri,
   description,

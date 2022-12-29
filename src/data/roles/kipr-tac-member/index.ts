@@ -10,6 +10,5 @@ export default {
   name: 'Technical Advisory Committee Member',
   organizationRef: OrganizationRef.company('kipr'),
   startDate: '2019-05-01',
-  location: Location.REMOTE,
   description,
 } as Role;

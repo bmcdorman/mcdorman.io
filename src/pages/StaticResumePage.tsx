@@ -15,9 +15,15 @@ import Dict from '../util/Dict';
 import SetOps from '../util/SetOps';
 import OrganizationRef from '../model/OrganizationRef';
 import Markdown from '../ui/Markdown';
+import Location from '../model/Location';
+import Skill from '../model/Skill';
+
+// @ts-ignore
+import gitInfo from 'git-info';
+import ProgrammingLanguage from '../model/ProgrammingLanguage';
 
 const Container = styled('div', {
-  fontSize: '0.9rem'
+  fontSize: '0.8rem'
 });
 
 const Name = styled('h1', {
@@ -72,13 +78,6 @@ const RoleInfo = styled('div', {
   fontWeight: 'bold',
 });
 
-const RoleName = styled('div', {
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
-  margin: 0,
-});
-
 const Dates = styled('span', {
   overflow: 'hidden',
 });
@@ -97,9 +96,24 @@ const Separator = styled('span', {
   marginRight: '0.5em',
 });
 
+enum ShorthandMode {
+  Long,
+  LongShort,
+  Short,
+}
+
+namespace ShorthandMode {
+  export const organizationName = (mode: ShorthandMode, organization: OrganizationModel): string => {
+    switch (mode) {
+      case ShorthandMode.Long: return OrganizationModel.name(organization);
+      case ShorthandMode.LongShort: return `${OrganizationModel.name(organization)} (${OrganizationModel.shorthand(organization)})`;
+      case ShorthandMode.Short: return OrganizationModel.shorthand(organization);
+    }
+  }
+}
 
 
-const Role = ({ role, organization }: { role: RoleModel; organization?: OrganizationModel }) => {
+const Role = ({ role, organization, shorthandMode }: { role: RoleModel; organization?: OrganizationModel; shorthandMode?: ShorthandMode; }) => {
   const {
     name,
     startDate,
@@ -107,14 +121,19 @@ const Role = ({ role, organization }: { role: RoleModel; organization?: Organiza
     description,
     location,
   } = role;
+
   return (
     <RoleContainer>
       <RoleInfo>
         {organization ? <>
-          {OrganizationModel.name(organization)}
+          {ShorthandMode.organizationName(shorthandMode || ShorthandMode.Long, organization)}
           <Separator />
         </> : undefined}
         {name}
+        {location ? <>
+          <Separator />
+          {location.type === Location.Type.Remote ? 'Remote' : location.location}
+        </> : undefined}
         <CenteredLine />
         <Dates>
           {toCompactHumanMonthYear(new Date(startDate))} to {endDate ? toCompactHumanMonthYear(new Date(endDate)) : 'Present'}
@@ -142,6 +161,10 @@ const Education = ({ education, organization }: { education: EducationModel; org
           <Separator />
         </> : undefined}
         {name}
+        {location ? <>
+          <Separator />
+          {location.type === Location.Type.Remote ? 'Remote' : location.location}
+        </> : undefined}
         <CenteredLine />
         <Dates>
           {toCompactHumanMonthYear(new Date(startDate))} to {endDate ? toCompactHumanMonthYear(new Date(endDate)) : 'Present'}
@@ -166,11 +189,67 @@ const Link = ({ title, href }: { title: string, href: string; }) => {
   );
 };
 
+const SkillsSubsectionContainer = styled('div', {
+  marginTop: '1em',
+});
+
+const SkillSubsectionTitle = styled('div', {
+  fontWeight: 'bold',
+});
+
+const SkillTypeContainer = styled('div', {
+  marginLeft: '1em',
+});
+
+const SkillTypeName = styled('span', {
+  fontWeight: 'bold',
+});
+
+const SkillContainer = styled('span', {
+  paddingLeft: '0.5em',
+  paddingRight: '0.5em',
+  borderRight: '1px solid #ccc',
+  ':last-child': {
+    borderRight: 'none',
+  }
+});
+
+const SkillsSubsection = ({ skills, title }: { skills: Skill[]; title: string; }) => {
+  const programmingLanguages = skills.filter(skill => skill.type === Skill.Type.ProgrammingLanguage) as Skill.ProgrammingLanguage[];
+  const libraries = skills.filter(skill => skill.type === Skill.Type.Library) as Skill.Library[];
+  const platforms = skills.filter(skill => skill.type === Skill.Type.Platform) as Skill.Platform[];
+  const tools = skills.filter(skill => skill.type === Skill.Type.Tool) as Skill.Tool[];
+  
+  
+  return (
+    <SkillsSubsectionContainer>
+      <SkillSubsectionTitle>{title}</SkillSubsectionTitle>
+      {programmingLanguages.length > 0 && <SkillTypeContainer>
+        <SkillTypeName>Programming Languages</SkillTypeName>
+        {programmingLanguages.map((skill, i) => <SkillContainer key={i}>{ProgrammingLanguage.name(skill.programmingLanguage)}</SkillContainer>)}
+      </SkillTypeContainer>}
+      {libraries.length > 0 && <SkillTypeContainer>
+        <SkillTypeName>Libraries</SkillTypeName>
+        {libraries.map((skill, i) => <SkillContainer key={i}>{skill.library}</SkillContainer>)}
+      </SkillTypeContainer>}
+      {platforms.length > 0 && <SkillTypeContainer>
+        <SkillTypeName>Platforms</SkillTypeName>
+        {platforms.map((skill, i) => <SkillContainer key={i}>{skill.platform}</SkillContainer>)}
+      </SkillTypeContainer>}
+      {tools.length > 0 && <SkillTypeContainer>
+        <SkillTypeName>Tools</SkillTypeName>
+        {tools.map((skill, i) => <SkillContainer key={i}>{skill.tool}</SkillContainer>)}
+      </SkillTypeContainer>}
+    </SkillsSubsectionContainer>
+  );
+};
+
 const Footer = styled('div', {
   marginTop: '1em',
   borderTop: '1px solid #ccc',
   paddingTop: '1em',
   fontSize: '0.8rem',
+  textAlign: 'center',
 });
 
 const NoteBox = styled('div', {
@@ -191,6 +270,36 @@ export const StaticResume = ({ resume, roles, education, organizations }: Static
   const roleModels: RoleModel[] = resume.roleIds.map(id => roles[id]);
   roleModels.sort(descending);
 
+  const orgReferences: Dict<number> = {};
+  for (const role of roleModels) {
+    if (!role.organizationRef) continue;
+    orgReferences[role.organizationRef.id] = (orgReferences[role.organizationRef.id] || 0) + 1;
+  }
+    
+
+  const seen = new Set<string>();
+  const roleModelsWithShorthands: [RoleModel, ShorthandMode][] = [];
+  for (const role of roleModels) {
+    if (!role.organizationRef) {
+      roleModelsWithShorthands.push([role, ShorthandMode.Long]);
+      continue;
+    }
+
+    if (seen.has(role.organizationRef.id)) {
+      roleModelsWithShorthands.push([role, ShorthandMode.Short]);
+      continue;
+    }
+
+    seen.add(role.organizationRef.id);
+    const organization = organizations[role.organizationRef.id];
+    roleModelsWithShorthands.push([
+      role,
+      orgReferences[role.organizationRef.id] > 1 && OrganizationModel.shorthand(organization) !== OrganizationModel.name(organization)
+        ? ShorthandMode.LongShort
+        : ShorthandMode.Long
+      ]);
+  }
+  
   const educationModels: EducationModel[] = Object.values(education);
   educationModels.sort(descending);
 
@@ -211,11 +320,12 @@ export const StaticResume = ({ resume, roles, education, organizations }: Static
       </Section>
 
       <Section title="Experience">
-        {roleModels.map(role => (
+        {roleModelsWithShorthands.map(([role, shorthandMode]) => (
           <Role
             key={role.id}
             role={role}
             organization={role.organizationRef ? organizations[role.organizationRef.id] : undefined}
+            shorthandMode={shorthandMode}
           />
         ))}
       </Section>
@@ -229,8 +339,13 @@ export const StaticResume = ({ resume, roles, education, organizations }: Static
           />
         ))}
       </Section>
+      <Section title="Skills">
+        <SkillsSubsection title={'Expert (> 10 years)'} skills={resume.skills.expert} />
+        <SkillsSubsection title={'Proficient (> 5 years)'} skills={resume.skills.proficient} />
+        <SkillsSubsection title={'Familiar (> 2 years)'} skills={resume.skills.familiar} />
+      </Section>
       <Footer>
-        Generated on {new Date().toLocaleDateString()} from <a href='https://mcdorman.io/resume'>mcdorman.io/resume</a>
+        Generated on {new Date().toLocaleDateString()} from <a href='https://mcdorman.io/resume'>mcdorman.io/resume</a> (commit {gitInfo.commitHash})
       </Footer>
     </Container>
   )

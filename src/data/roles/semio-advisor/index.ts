@@ -10,6 +10,5 @@ export default {
   name: 'Advisor',
   organizationRef: OrganizationRef.company('semio'),
   startDate: '2023-04-13',
-  location: Location.REMOTE,
   description,
 } as Role;

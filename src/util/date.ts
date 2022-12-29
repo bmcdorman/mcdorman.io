@@ -36,3 +36,10 @@ export const toCompactHumanMonthYear = (date: Date): string => {
   const year = adjustedDate.getFullYear();
   return `${month} ${year}`;
 };
+
+export const toNumericalMonthYear = (date: Date): string => {
+  const adjustedDate = new Date(date.getTime() + 12 * 60 * 60 * 1000);
+  const month = adjustedDate.getMonth() + 1;
+  const year = adjustedDate.getFullYear();
+  return `${month}/${year}`;
+};
