@@ -16,4 +16,8 @@ export default {
     programmingLanguages: [ ProgrammingLanguage.Rust ],
   }],
   description,
+  toolsUsed: [
+    'UDP',
+    'Hex Editor'
+  ]
 } as Project;

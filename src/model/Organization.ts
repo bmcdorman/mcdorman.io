@@ -31,7 +31,7 @@ namespace Organization {
       case Type.Company:
         return organization.company.shorthand || organization.company.name;
       case Type.School:
-        return organization.school.name;
+        return organization.school.shorthand || organization.school.name;
     }
   };
 

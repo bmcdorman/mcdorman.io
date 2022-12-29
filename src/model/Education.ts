@@ -4,6 +4,7 @@ import OrganizationRef from './OrganizationRef';
 interface Education {
   id: string;
   name: string;
+  shorthand?: string;
   organizationRef: OrganizationRef;
   location: Location;
   startDate: string;

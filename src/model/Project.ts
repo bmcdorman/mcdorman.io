@@ -8,9 +8,13 @@ interface Project {
   roleIds?: string[];
   description?: string;
   relatedProjectIds?: string[];
+
   contributions?: Contribution[];
   contributionLevel?: ContributionLevel;
+  
   programmingLanguages?: ProgrammingLanguage[];
+
+  toolsUsed?: string[];
 }
 
 export default Project;

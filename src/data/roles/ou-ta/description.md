@@ -1,2 +1,2 @@
-TAed "Applied Logic for Software and Hardware", a second-semester sophomore course, for the Spring 2014 semester.
-TAed "Software Engineering I", the first-semester senior capstone course, for the Fall 2013 semester.
+Served as the teaching assistant for "Applied Logic for Software and Hardware", a second-semester sophomore course, for the Spring 2014 semester.
+Served as the teaching assistant "Software Engineering I", the first-semester senior capstone course, for the Fall 2013 semester.

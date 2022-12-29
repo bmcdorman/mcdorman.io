@@ -11,6 +11,8 @@ namespace Contribution {
   }
 }
 
-type Contribution = Contribution.Programming;
+type Contribution = (
+  Contribution.Programming
+);
 
 export default Contribution;

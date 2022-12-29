@@ -7,6 +7,7 @@ export interface SectionProps<P extends {} = any> extends StyleProps {
   title: string;
   children: React.ReactNode;
   right?: Component<P>;
+  inline?: boolean;
 }
 
 type Props<P extends {} = any> = SectionProps<P>;
@@ -24,23 +25,36 @@ const Title = styled('div', {
 
 });
 
-const Container = styled('div', {
+const Container = styled('div', ({ $inline }: { $inline: boolean; }) => ({
   width: '100%',
-  padding: '1rem',
+  padding: !$inline ? '1rem' : 0,
   ':first-child': {
     marginTop: 0,
   },
   ':not(:last-child)': {
     borderBottom: '1px solid #ccc',
   }
-});
+}));
 
 class Section<P extends {} = any> extends React.Component<Props<P>> {
   render() {
     const { props } = this;
-    const { title, children, className, style, right } = props;
+    
+    const {
+      title,
+      children,
+      className,
+      style,
+      right,
+      inline
+    } = props;
+    
     return (
-      <Container className={className} style={style}>
+      <Container
+        className={className}
+        style={style}
+        $inline={inline || false}
+      >
         <TitleContainer>
           <Title>{title}</Title>
           <FlexSpacer />

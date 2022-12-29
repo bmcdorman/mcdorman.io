@@ -8,13 +8,19 @@ import State from '../State';
 import Markdown from './Markdown';
 import { StyleProps } from '../style';
 import { ItemContainer, ItemTop } from './common';
+import Section from './Section';
+import Pill from './Pill';
+
+const Description = styled('div', {
+  width: '100%'
+});
 
 class Project extends React.Component<Project.Props> {
   render() {
     const { props } = this;
     const { project, onClick, className, style } = props;
 
-    const { name, description } = project;
+    const { name, description, toolsUsed, contributions } = project;
 
     return (
       <ItemContainer
@@ -26,7 +32,20 @@ class Project extends React.Component<Project.Props> {
         <ItemTop>
           <div>{name}</div>
         </ItemTop>
-        {description && <Markdown>{description}</Markdown>}
+        {description && (
+          <Description>
+            <Markdown>
+              {description}
+            </Markdown>
+          </Description>
+        )}
+        {toolsUsed && (
+          <Section title='Tools Used' inline>
+            {toolsUsed.map((toolUsed, i) => (
+              <Pill key={i}>{toolUsed}</Pill>
+            ))}
+          </Section>
+        )}
       </ItemContainer>
     );
   }

@@ -11,4 +11,5 @@ export default {
   organizationRef: OrganizationRef.company('bobblesports'),
   startDate: '2020-01-01',
   description,
+  location: Location.REMOTE,
 } as Role;
