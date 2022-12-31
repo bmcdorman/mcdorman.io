@@ -1,0 +1,1 @@
+Worked on point cloud mapping and localization technologies for consumer-grade depth sensors. Utilized GPU computing to perform massive data queries in close to realtime.

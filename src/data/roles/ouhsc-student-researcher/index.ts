@@ -16,4 +16,5 @@ export default {
     location: 'Oklahoma City, OK',
   },
   description,
+  hideStatic: true
 } as Role;

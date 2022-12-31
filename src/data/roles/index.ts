@@ -26,7 +26,6 @@ export default bundle([
   kiprTacMember,
   bobblesportsAdvisor,
   newspinRdSoftwareEngineer,
-  semioAdvisor,
   plasmaUmassGsoc,
   ouhscStudentResearcher,
   ouTa,

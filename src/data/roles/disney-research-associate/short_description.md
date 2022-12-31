@@ -1,0 +1,1 @@
+Implemented and conducted studies on group formation recognition and planning algorithms for social robots in human spaces. The result of this work was published in the Proceedings of the Human Robot Interaction 2017 conference.

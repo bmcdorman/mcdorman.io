@@ -12,4 +12,5 @@ export default {
   startDate: '2019-05-01',
   description,
   location: Location.REMOTE,
+  hideStatic: true
 } as Role;

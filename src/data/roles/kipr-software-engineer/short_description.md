@@ -1,0 +1,1 @@
+Designed and developed educational robotics programming software for Windows, Mac OS X, and Linux. Responsibilities included Qt user interface design/development, user libraries design/development, serial communication, and device kernel modules.

@@ -13,4 +13,5 @@ export default {
   organizationRef: OrganizationRef.company('plasma-umass'),
   location: Location.REMOTE,
   description,
+  hideStatic: true
 } as Role;

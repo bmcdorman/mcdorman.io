@@ -7,8 +7,10 @@ interface Role {
   startDate: string;
   endDate?: string;
   description?: string;
+  shortDescription?: string;
   organizationRef?: OrganizationRef;
   location?: Location;
+  hideStatic?: boolean;
 }
 
 export default Role;

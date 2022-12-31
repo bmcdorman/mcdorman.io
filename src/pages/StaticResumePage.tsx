@@ -21,6 +21,17 @@ import Skill from '../model/Skill';
 // @ts-ignore
 import ProgrammingLanguage from '../model/ProgrammingLanguage';
 
+// @ts-ignore
+import gitInfo from 'git-info';
+
+const Paragraph = styled('p', {
+  marginTop: '0.2em',
+});
+
+const ParagraphRenderer = (props: { children: React.ReactNode }) => {
+  return <Paragraph>{props.children}</Paragraph>;
+};
+
 const Container = styled('div', {
   fontSize: '0.8rem'
 });
@@ -48,7 +59,7 @@ const ContactComponent = styled('div', {
 });
 
 const SectionContainer = styled('div', {
-  marginTop: '1em',
+  marginTop: '0.5em',
 });
 
 const SectionName = styled('h2', {
@@ -67,7 +78,7 @@ const Section = (props: { title: string, children: React.ReactNode }) => {
 };
 
 const RoleContainer = styled('div', {
-  marginTop: '1em',
+  marginTop: '0.5em',
 });
 
 const RoleInfo = styled('div', {
@@ -117,9 +128,11 @@ const Role = ({ role, organization, shorthandMode }: { role: RoleModel; organiza
     name,
     startDate,
     endDate,
-    description,
     location,
+    hideStatic
   } = role;
+
+  const description = role.shortDescription || role.description;
 
   return (
     <RoleContainer>
@@ -138,7 +151,7 @@ const Role = ({ role, organization, shorthandMode }: { role: RoleModel; organiza
           {toCompactHumanMonthYear(new Date(startDate))} to {endDate ? toCompactHumanMonthYear(new Date(endDate)) : 'Present'}
         </Dates>
       </RoleInfo>
-      {description && <Markdown>{description}</Markdown>}
+      {description && !hideStatic && <Markdown components={{ p: ParagraphRenderer }}>{description}</Markdown>}
     </RoleContainer>
   );
 };
@@ -165,7 +178,7 @@ const Education = ({ education, organization }: { education: EducationModel; org
           {toCompactHumanMonthYear(new Date(startDate))} to {endDate ? toCompactHumanMonthYear(new Date(endDate)) : 'Present'}
         </Dates>
       </RoleInfo>
-      {description && <Markdown>{description}</Markdown>}
+      {description && <Markdown components={{ p: ParagraphRenderer }}>{description}</Markdown>}
     </RoleContainer>
   );
 };
@@ -185,7 +198,7 @@ const Link = ({ title, href }: { title: string, href: string; }) => {
 };
 
 const SkillsSubsectionContainer = styled('div', {
-  marginTop: '1em',
+  marginTop: '0.5em',
 });
 
 const SkillSubsectionTitle = styled('div', {
@@ -215,7 +228,6 @@ const SkillsSubsection = ({ skills, title }: { skills: Skill[]; title: string; }
   const platforms = skills.filter(skill => skill.type === Skill.Type.Platform) as Skill.Platform[];
   const tools = skills.filter(skill => skill.type === Skill.Type.Tool) as Skill.Tool[];
   const techniques = skills.filter(skill => skill.type === Skill.Type.Technique) as Skill.Technique[];
-  
   
   return (
     <SkillsSubsectionContainer>
@@ -315,7 +327,7 @@ export const StaticResume = ({ resume, roles, education, organizations }: Static
       </NoteBox>
       
       <Section title="Summary">
-        <Markdown>{resume.about}</Markdown>
+        <Markdown components={{ p: ParagraphRenderer }}>{resume.about}</Markdown>
       </Section>
 
       <Section title="Experience">
@@ -347,7 +359,7 @@ export const StaticResume = ({ resume, roles, education, organizations }: Static
         <SkillsSubsection title='Over 2 years' skills={resume.skills.familiar} />
       </Section>
       <Footer>
-        Generated on {new Date().toLocaleDateString()} from <a href='https://mcdorman.io/resume'>mcdorman.io/resume</a> (commit).
+        Generated on {new Date().toLocaleDateString()} from <a href='https://mcdorman.io/resume'>mcdorman.io/resume</a> (commit {gitInfo.commitHash}).
       </Footer>
     </Container>
   )

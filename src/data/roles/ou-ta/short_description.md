@@ -1,0 +1,1 @@
+Served as the teaching assistant for "Applied Logic for Software and Hardware" and "Software Engineering I".

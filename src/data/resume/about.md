@@ -3,4 +3,4 @@ I am an expert software engineer, early-stage startup advisor, and entreprenuer 
 full-stack web development, robotics, cloud, 3D/GPGPU, desktop applications,
 kernel development, networking, and embedded systems.
 
-I am passionate about creating stunning experiences backed by robust and multi-disciplinary engineering.
+I am passionate about creating stunning experiences that delight customers.

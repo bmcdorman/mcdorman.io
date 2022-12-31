@@ -3,6 +3,8 @@ import Role from '../../../model/Role';
 
 // @ts-ignore
 import description from 'bundle-text:./description.md';
+// @ts-ignore
+import shortDescription from 'bundle-text:./short_description.md';
 import OrganizationRef from '../../../model/OrganizationRef';
 
 export default {
@@ -16,4 +18,6 @@ export default {
     location: 'Norman, OK',
   },
   description,
+  shortDescription,
+  hideStatic: true
 } as Role;
