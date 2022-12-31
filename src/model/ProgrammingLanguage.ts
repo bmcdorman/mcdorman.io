@@ -10,6 +10,7 @@ enum ProgrammingLanguage {
   Java = 'java',
   Latex = 'latex',
   ObjectiveC = 'objective-c',
+  QtQuick = 'qtquick',
 }
 
 namespace ProgrammingLanguage {
@@ -37,6 +38,8 @@ namespace ProgrammingLanguage {
         return 'LaTeX';
       case ProgrammingLanguage.ObjectiveC:
         return 'Objective-C';
+      case ProgrammingLanguage.QtQuick:
+        return 'Qt Quick';
     }
   };
 }

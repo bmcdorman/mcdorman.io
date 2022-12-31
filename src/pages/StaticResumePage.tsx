@@ -218,6 +218,7 @@ const SkillsSubsection = ({ skills, title }: { skills: Skill[]; title: string; }
   const libraries = skills.filter(skill => skill.type === Skill.Type.Library) as Skill.Library[];
   const platforms = skills.filter(skill => skill.type === Skill.Type.Platform) as Skill.Platform[];
   const tools = skills.filter(skill => skill.type === Skill.Type.Tool) as Skill.Tool[];
+  const techniques = skills.filter(skill => skill.type === Skill.Type.Technique) as Skill.Technique[];
   
   
   return (
@@ -238,6 +239,10 @@ const SkillsSubsection = ({ skills, title }: { skills: Skill[]; title: string; }
       {tools.length > 0 && <SkillTypeContainer>
         <SkillTypeName>Tools</SkillTypeName>
         {tools.map((skill, i) => <SkillContainer key={i}>{skill.tool}</SkillContainer>)}
+      </SkillTypeContainer>}
+      {techniques.length > 0 && <SkillTypeContainer>
+        <SkillTypeName>Techniques</SkillTypeName>
+        {techniques.map((skill, i) => <SkillContainer key={i}>{skill.technique}</SkillContainer>)}
       </SkillTypeContainer>}
     </SkillsSubsectionContainer>
   );
@@ -274,8 +279,7 @@ export const StaticResume = ({ resume, roles, education, organizations }: Static
     if (!role.organizationRef) continue;
     orgReferences[role.organizationRef.id] = (orgReferences[role.organizationRef.id] || 0) + 1;
   }
-    
-
+  
   const seen = new Set<string>();
   const roleModelsWithShorthands: [RoleModel, ShorthandMode][] = [];
   for (const role of roleModels) {
@@ -334,7 +338,10 @@ export const StaticResume = ({ resume, roles, education, organizations }: Static
           <Education
             key={edu.id}
             education={edu}
-            organization={edu.organizationRef ? organizations[edu.organizationRef.id] : undefined}
+            organization={edu.organizationRef
+              ? organizations[edu.organizationRef.id]
+              : undefined
+            }
           />
         ))}
       </Section>
@@ -344,7 +351,7 @@ export const StaticResume = ({ resume, roles, education, organizations }: Static
         <SkillsSubsection title='Over 2 years' skills={resume.skills.familiar} />
       </Section>
       <Footer>
-        Generated on {new Date().toLocaleDateString()} from <a href='https://mcdorman.io/resume'>mcdorman.io/resume</a> (commit)
+        Generated on {new Date().toLocaleDateString()} from <a href='https://mcdorman.io/resume'>mcdorman.io/resume</a> (commit).
       </Footer>
     </Container>
   )
