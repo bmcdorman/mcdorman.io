@@ -33,6 +33,7 @@ const TYPE_COLOR: { [key in Skill['type']]: Rgb } = {
   library: { r: 20 / 255, g: 1 / 255, b: 141 / 255 },
   tool: { r: 1 / 255, g: 141 / 255, b: 66 / 255 },
   platform: { r: 141 / 255, g: 141 / 255, b: 141 / 255 },
+  technique: { r: 241 / 255, g: 100 / 255, b: 1 / 255 },
 };
 
 class Skills extends React.Component<Props> {
