@@ -1,1 +1,1 @@
-Received the prestigious NSF Graduate Research Fellowship and pursued a PhD in Computer Science. Left the PhD program to pursue Semio, a robotics startup I co-founded, full-time.
+Received the prestigious National Science Foundation Graduate Research Fellowship and pursued a Ph.D. in Computer Science with focus in social robotics. Advised by [Prof. Maja Matarić](https://viterbi.usc.edu/directory/faculty/Mataric/Maja). Left the Ph.D. program _without receiving a degree_ to pursue Semio, a robotics startup I co-founded, full-time.

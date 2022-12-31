@@ -160,10 +160,6 @@ const Education = ({ education, organization }: { education: EducationModel; org
           <Separator />
         </> : undefined}
         {name}
-        {location ? <>
-          <Separator />
-          {location.type === Location.Type.Remote ? 'Remote' : location.location}
-        </> : undefined}
         <CenteredLine />
         <Dates>
           {toCompactHumanMonthYear(new Date(startDate))} to {endDate ? toCompactHumanMonthYear(new Date(endDate)) : 'Present'}

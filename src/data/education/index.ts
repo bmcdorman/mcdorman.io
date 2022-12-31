@@ -6,5 +6,4 @@ import ossmHighschool from './ossm-highschool';
 export default bundle([
   ouBsCs,
   uscPhdCs,
-  ossmHighschool,
 ]);
