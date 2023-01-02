@@ -10,6 +10,7 @@ import { StyleProps } from '../style';
 import { ItemContainer, ItemTop } from './common';
 import Section from './Section';
 import Pill from './Pill';
+import Rgba from '../math/Rgba';
 
 const Description = styled('div', {
   width: '100%'
@@ -42,7 +43,7 @@ class Project extends React.Component<Project.Props> {
         {toolsUsed && (
           <Section title='Tools Used' inline>
             {toolsUsed.map((toolUsed, i) => (
-              <Pill key={i}>{toolUsed}</Pill>
+              <Pill $backgroundColor={Rgba.BLACK} key={i}>{toolUsed}</Pill>
             ))}
           </Section>
         )}
