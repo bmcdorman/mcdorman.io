@@ -33,8 +33,6 @@ export default {
       Skill.library('BSD Sockets'),
       Skill.platform('Linux'),
       Skill.platform('macOS'),
-      Skill.technique('Imperative Programming'),
-      Skill.technique('Object Oriented Programming'),
       Skill.technique('Plugin Architectures'),
       Skill.technique('Serialization'),
     ],
@@ -56,8 +54,6 @@ export default {
       Skill.platform('Embedded Linux'),
       Skill.technique('Agile'),
       Skill.technique('REST'),
-      Skill.technique('Functional Programming'),
-      Skill.technique('Declarative Programming'),
       Skill.technique('Microservice Architectures'),
       Skill.technique('Parsing and Lexical Analysis'),
     ],
@@ -82,7 +78,7 @@ export default {
       Skill.platform('Android'),
       Skill.platform('iOS'),
       Skill.platform('Bare Metal'),
-      Skill.technique('Reverse Engineering and Packet Analysis'),
+      Skill.technique('Packet Analysis'),
     ],
 
   }
