@@ -288,22 +288,27 @@ export const StaticResume = ({ resume, roles, education, organizations }: Static
     orgReferences[role.organizationRef.id] = (orgReferences[role.organizationRef.id] || 0) + 1;
   }
   
+  
+
+  const employeeRoleModels = roleModels.filter(role => role.kind === 'employee');
+  const advisorRoleModels = roleModels.filter(role => role.kind === 'advisor');
+
   const seen = new Set<string>();
-  const roleModelsWithShorthands: [RoleModel, ShorthandMode][] = [];
-  for (const role of roleModels) {
+  const employeeRoleModelsWithShorthands: [RoleModel, ShorthandMode][] = [];
+  for (const role of employeeRoleModels) {
     if (!role.organizationRef) {
-      roleModelsWithShorthands.push([role, ShorthandMode.Long]);
+      employeeRoleModelsWithShorthands.push([role, ShorthandMode.Long]);
       continue;
     }
 
     if (seen.has(role.organizationRef.id)) {
-      roleModelsWithShorthands.push([role, ShorthandMode.Short]);
+      employeeRoleModelsWithShorthands.push([role, ShorthandMode.Short]);
       continue;
     }
 
     seen.add(role.organizationRef.id);
     const organization = organizations[role.organizationRef.id];
-    roleModelsWithShorthands.push([
+    employeeRoleModelsWithShorthands.push([
       role,
       orgReferences[role.organizationRef.id] > 1 && OrganizationModel.shorthand(organization) !== OrganizationModel.name(organization)
         ? ShorthandMode.LongShort
@@ -311,8 +316,30 @@ export const StaticResume = ({ resume, roles, education, organizations }: Static
       ]);
   }
 
-  const employeeRoleModels = roleModelsWithShorthands.filter(([role, _]) => role.kind === 'employee');
-  const advisorRoleModels = roleModelsWithShorthands.filter(([role, _]) => role.kind === 'advisor');
+  const advisorRoleModelsWithShorthands: [RoleModel, ShorthandMode][] = [];
+  for (const role of advisorRoleModels) {
+    if (!role.organizationRef) {
+      advisorRoleModelsWithShorthands.push([role, ShorthandMode.Long]);
+      continue;
+    }
+
+    if (seen.has(role.organizationRef.id)) {
+      advisorRoleModelsWithShorthands.push([role, ShorthandMode.Short]);
+      continue;
+    }
+
+    seen.add(role.organizationRef.id);
+    const organization = organizations[role.organizationRef.id];
+    advisorRoleModelsWithShorthands.push([
+      role,
+      orgReferences[role.organizationRef.id] > 1 && OrganizationModel.shorthand(organization) !== OrganizationModel.name(organization)
+        ? ShorthandMode.LongShort
+        : ShorthandMode.Long
+      ]);
+  }
+
+
+
   
   const educationModels: EducationModel[] = Object.values(education);
   educationModels.sort(descending);
@@ -334,7 +361,7 @@ export const StaticResume = ({ resume, roles, education, organizations }: Static
       </Section>
 
       <Section title="Experience">
-        {employeeRoleModels.map(([role, shorthandMode]) => (
+        {employeeRoleModelsWithShorthands.map(([role, shorthandMode]) => (
           <Role
             key={role.id}
             role={role}
@@ -345,7 +372,7 @@ export const StaticResume = ({ resume, roles, education, organizations }: Static
       </Section>
 
       <Section title="Advisory Experience">
-        {advisorRoleModels.map(([role, shorthandMode]) => (
+        {advisorRoleModelsWithShorthands.map(([role, shorthandMode]) => (
           <Role
             key={role.id}
             role={role}
