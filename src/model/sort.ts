@@ -18,3 +18,12 @@ export const descending = <T extends { startDate: string; endDate?: string; }>(a
   if (a.endDate! < b.endDate!) return 1;
   return 0;
 };
+
+export const descendingAscending = <T extends { startDate: string; endDate?: string; }>(a: T, b: T): number => {
+  if (!a.endDate && !b.endDate) return ascendingStartDate(a, b);
+  if (!a.endDate && b.endDate) return -1;
+  if (a.endDate && !b.endDate) return 1;
+  if (a.endDate! > b.endDate!) return -1;
+  if (a.endDate! < b.endDate!) return 1;
+  return 0;
+};

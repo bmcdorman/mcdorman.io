@@ -16,4 +16,5 @@ export default {
     location: 'Norman, OK',
   },
   description,
+  kind: 'employee'
 } as Role;

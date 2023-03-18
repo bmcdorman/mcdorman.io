@@ -70,6 +70,7 @@ class ResumePage extends React.Component<ResumePage.Props, ResumePage.State> {
 
     this.state = {
       rolesStyle: ResumePage.RolesStyle.Compressed,
+      advisorRolesStyle: ResumePage.RolesStyle.Compressed,
       size: undefined,
     };
   }
@@ -83,6 +84,12 @@ class ResumePage extends React.Component<ResumePage.Props, ResumePage.State> {
   private onRolesStyleChange_ = (index: number) => {
     this.setState({
       rolesStyle: ResumePage.ROLES_STYLE_OPTIONS[index].userData as ResumePage.RolesStyle,
+    });
+  };
+
+  private onAdvisorRolesStyleChange_ = (index: number) => {
+    this.setState({
+      advisorRolesStyle: ResumePage.ROLES_STYLE_OPTIONS[index].userData as ResumePage.RolesStyle,
     });
   };
 
@@ -106,6 +113,9 @@ class ResumePage extends React.Component<ResumePage.Props, ResumePage.State> {
     const roleModels: RoleModel[] = resume.roleIds.map(id => roles[id]);
     roleModels.sort(descending);
 
+    const employeeRoleModels: RoleModel[] = roleModels.filter(role => role.kind === 'employee');
+    const advisorRoleModels: RoleModel[] = roleModels.filter(role => role.kind === 'advisor');
+
     const educationModels: EducationModel[] = Object.values(education);
     educationModels.sort(descending);
 
@@ -115,6 +125,12 @@ class ResumePage extends React.Component<ResumePage.Props, ResumePage.State> {
       onChange: this.onRolesStyleChange_,
     });
 
+    const advisorRolesRight = Component.create(OneOf, {
+      options: ResumePage.ROLES_STYLE_OPTIONS,
+      index: ResumePage.ROLES_STYLE_OPTIONS.findIndex(option => option.userData === this.state.advisorRolesStyle)!,
+      onChange: this.onAdvisorRolesStyleChange_,
+    });
+
     const aboutSection = (
       <Section title='Hi! 👋'>
         <Markdown>{about}</Markdown>
@@ -122,13 +138,26 @@ class ResumePage extends React.Component<ResumePage.Props, ResumePage.State> {
     );
 
     const rolesSection = (
-      <Section title='Roles' right={rolesRight}>
-        {roleModels.map(role => (
+      <Section title='Experience' right={rolesRight}>
+        {employeeRoleModels.map(role => (
           <Role
             key={role.id}
             role={role}
             onClick={this.onRoleClick_(role.id)}
             mini={rolesStyle === ResumePage.RolesStyle.Compressed}
+          />
+        ))}
+      </Section>
+    );
+
+    const advisorRolesSection = (
+      <Section title='Advisory Experience' right={advisorRolesRight}>
+        {advisorRoleModels.map(role => (
+          <Role
+            key={role.id}
+            role={role}
+            onClick={this.onRoleClick_(role.id)}
+            mini={this.state.advisorRolesStyle === ResumePage.RolesStyle.Compressed}
           />
         ))}
       </Section>
@@ -181,6 +210,7 @@ class ResumePage extends React.Component<ResumePage.Props, ResumePage.State> {
           <Left>
             {aboutSection}
             {rolesSection}
+            {advisorRolesSection}
             {educationSection}
           </Left>
           <Right>
@@ -196,6 +226,7 @@ class ResumePage extends React.Component<ResumePage.Props, ResumePage.State> {
             {aboutSection}
             {contactSection}
             {rolesSection}
+            {advisorRolesSection}
             {educationSection}
             {skillsSection}
           </Left>
@@ -228,6 +259,7 @@ namespace ResumePage {
   export interface State {
     size?: Vector2;
     rolesStyle: RolesStyle;
+    advisorRolesStyle: RolesStyle;
   }
 
   export const ROLES_STYLE_OPTIONS: OneOf.Option[] = [{

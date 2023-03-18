@@ -12,11 +12,11 @@ export default {
   name: 'Co-Founder & CTO',
   organizationRef: OrganizationRef.company('semio'),
   startDate: '2014-01-02',
-  endDate: '2023-04-12',
   location: {
     type: Location.Type.Onsite,
     location: 'Los Angeles, CA',
   },
   description,
-  shortDescription
+  shortDescription,
+  kind: 'employee'
 } as Role;

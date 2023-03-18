@@ -16,5 +16,6 @@ export default {
     location: 'Oklahoma City, OK',
   },
   description,
-  hideStatic: true
+  hideStatic: true,
+  kind: 'employee'
 } as Role;

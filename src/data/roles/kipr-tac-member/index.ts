@@ -7,10 +7,11 @@ import OrganizationRef from '../../../model/OrganizationRef';
 
 export default {
   id: 'kipr-tac-member',
-  name: 'Technical Advisory Committee Member',
+  name: 'Technical Advisory Committee Chair',
   organizationRef: OrganizationRef.company('kipr'),
   startDate: '2019-05-01',
   description,
   location: Location.REMOTE,
-  hideStatic: true
+  hideStatic: true,
+  kind: 'advisor'
 } as Role;

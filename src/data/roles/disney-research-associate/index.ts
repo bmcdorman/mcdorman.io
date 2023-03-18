@@ -18,5 +18,6 @@ export default {
     location: 'Pittsburgh, PA',
   },
   description,
-  shortDescription
+  shortDescription,
+  kind: 'employee'
 } as Role;

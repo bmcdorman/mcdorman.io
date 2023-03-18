@@ -12,4 +12,5 @@ export default {
   startDate: '2021-04-01',
   description,
   location: Location.REMOTE,
+  kind: 'advisor'
 } as Role;

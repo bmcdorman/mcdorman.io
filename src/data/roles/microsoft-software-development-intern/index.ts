@@ -16,4 +16,5 @@ export default {
     location: 'Redmond, WA',
   },
   description,
+  kind: 'employee'
 } as Role;

@@ -56,7 +56,6 @@ class Top extends React.Component<Top.Props> {
         <Sep />
         <Button onClick={props.onResumeClick}>Resume</Button>
         <FlexSpacer />
-        <UnderConstructionNotice><Icon icon={faPersonDigging} /> Website under construction</UnderConstructionNotice>
       </Container>
     );
   }

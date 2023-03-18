@@ -4,7 +4,7 @@ import { styled } from 'styletron-react';
 import ResumeModel from '../model/Resume';
 import RoleModel from '../model/Role';
 import OrganizationModel from '../model/Organization';
-import { descending } from '../model/sort';
+import { descending, descendingAscending } from '../model/sort';
 import State from '../State';
 import EducationModel from '../model/Education';
 import { FlexSpacer } from '../style';
@@ -310,6 +310,9 @@ export const StaticResume = ({ resume, roles, education, organizations }: Static
         : ShorthandMode.Long
       ]);
   }
+
+  const employeeRoleModels = roleModelsWithShorthands.filter(([role, _]) => role.kind === 'employee');
+  const advisorRoleModels = roleModelsWithShorthands.filter(([role, _]) => role.kind === 'advisor');
   
   const educationModels: EducationModel[] = Object.values(education);
   educationModels.sort(descending);
@@ -331,7 +334,18 @@ export const StaticResume = ({ resume, roles, education, organizations }: Static
       </Section>
 
       <Section title="Experience">
-        {roleModelsWithShorthands.map(([role, shorthandMode]) => (
+        {employeeRoleModels.map(([role, shorthandMode]) => (
+          <Role
+            key={role.id}
+            role={role}
+            organization={role.organizationRef ? organizations[role.organizationRef.id] : undefined}
+            shorthandMode={shorthandMode}
+          />
+        ))}
+      </Section>
+
+      <Section title="Advisory Experience">
+        {advisorRoleModels.map(([role, shorthandMode]) => (
           <Role
             key={role.id}
             role={role}

@@ -39,7 +39,7 @@ class App extends React.Component {
           <Route path='/project/:id' component={ProjectPage} />
           <Route path='/role/:id' component={RolePage} />
           <Route path='/resume' component={ResumePage} />
-          <Route path="/" component={HomePage} />
+          <Route path="/" component={ResumePage} />
           <Route component={NotFound} />
         </Switch>
         <Footer />

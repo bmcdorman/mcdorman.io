@@ -11,6 +11,7 @@ interface Role {
   organizationRef?: OrganizationRef;
   location?: Location;
   hideStatic?: boolean;
+  kind: 'employee' | 'advisor';
 }
 
 export default Role;

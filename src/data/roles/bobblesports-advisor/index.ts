@@ -15,4 +15,5 @@ export default {
   description,
   shortDescription,
   location: Location.REMOTE,
+  kind: 'advisor',
 } as Role;

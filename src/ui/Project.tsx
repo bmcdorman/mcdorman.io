@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
-import { styled } from 'styletron-react';
+import { styled, withStyleDeep } from 'styletron-react';
 import ProjectModel from '../model/Project';
 import State from '../State';
 
@@ -11,9 +11,18 @@ import { ItemContainer, ItemTop } from './common';
 import Section from './Section';
 import Pill from './Pill';
 import Rgba from '../math/Rgba';
+import Subsection from './Subsection';
 
 const Description = styled('div', {
   width: '100%'
+});
+
+const StyledSubsection = styled(Subsection, {
+  marginTop: '0.5rem'
+});
+
+const StyledPill = withStyleDeep(Pill, {
+  marginTop: '0.5rem'
 });
 
 class Project extends React.Component<Project.Props> {
@@ -35,17 +44,17 @@ class Project extends React.Component<Project.Props> {
         </ItemTop>
         {description && (
           <Description>
-            <Markdown>
+            <Markdown className='project-description'>
               {description}
             </Markdown>
           </Description>
         )}
         {toolsUsed && (
-          <Section title='Tools Used' inline>
+          <StyledSubsection title='Tools Used'>
             {toolsUsed.map((toolUsed, i) => (
               <Pill $backgroundColor={Rgba.BLACK} key={i}>{toolUsed}</Pill>
             ))}
-          </Section>
+          </StyledSubsection>
         )}
       </ItemContainer>
     );

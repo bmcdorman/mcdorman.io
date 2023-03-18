@@ -15,5 +15,6 @@ export default {
   endDate: '2014-04-01',
   location: Location.REMOTE,
   description,
-  shortDescription
+  shortDescription,
+  kind: 'employee'
 } as Role;
