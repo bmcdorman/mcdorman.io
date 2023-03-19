@@ -19,6 +19,6 @@ export default {
   },
   description,
   shortDescription,
-  hideStatic: true,
+  hideStatic: false,
   kind: 'employee'
 } as Role;
