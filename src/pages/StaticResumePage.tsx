@@ -258,10 +258,10 @@ const SkillsSubsection = ({ skills, title }: { skills: Skill[]; title: string; }
 };
 
 const Footer = styled('div', {
-  marginTop: '1em',
+  marginTop: '0.5em',
   borderTop: '1px solid #ccc',
-  paddingTop: '1em',
-  fontSize: '0.8rem',
+  paddingTop: '0.5em',
+  fontSize: '0.6rem',
   textAlign: 'center',
 });
 
