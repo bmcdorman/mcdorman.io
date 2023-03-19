@@ -267,7 +267,10 @@ const Footer = styled('div', {
 
 const NoteBox = styled('div', {
   border: '1px solid #000',
-  padding: '0.5em',
+  paddingLeft: '0.5em',
+  paddingRight: '0.5em',
+  paddingTop: '0.4em',
+  paddingBottom: '0.4em',
   marginTop: '1em',
   fontWeight: 'bold',
 });
