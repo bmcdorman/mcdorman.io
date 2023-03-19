@@ -26,6 +26,7 @@ import gitInfo from 'git-info';
 
 const Paragraph = styled('p', {
   marginTop: '0.2em',
+  marginBottom: '0.9em',
 });
 
 const ParagraphRenderer = (props: { children: React.ReactNode }) => {
