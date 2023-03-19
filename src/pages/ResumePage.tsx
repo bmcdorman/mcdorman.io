@@ -69,8 +69,8 @@ class ResumePage extends React.Component<ResumePage.Props, ResumePage.State> {
     super(props);
 
     this.state = {
-      rolesStyle: ResumePage.RolesStyle.Compressed,
-      advisorRolesStyle: ResumePage.RolesStyle.Compressed,
+      rolesStyle: ResumePage.RolesStyle.Expanded,
+      advisorRolesStyle: ResumePage.RolesStyle.Expanded,
       size: undefined,
     };
   }
@@ -185,17 +185,17 @@ class ResumePage extends React.Component<ResumePage.Props, ResumePage.State> {
     const skillsSection = (
       <Section title='Experience'>
         {skills.expert && (
-          <Subsection title='> 10 years'>
+          <Subsection title='Over 10 years'>
             <Skills skills={skills.expert} />
           </Subsection>
         )}
         {skills.proficient && (
-          <Subsection title='> 5 years'>
+          <Subsection title='Over 5 years'>
             <Skills skills={skills.proficient} />
           </Subsection>
         )}
         {skills.familiar && (
-          <Subsection title='> 2 years'>
+          <Subsection title='Over 2 years'>
             <Skills skills={skills.familiar} />
           </Subsection>
         )}

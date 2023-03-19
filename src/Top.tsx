@@ -13,7 +13,6 @@ const Container = styled('div', {
   flexDirection: 'row',
   width: '100%',
   fontSize: '1.5em',
-  paddingTop: '1rem',
   color: 'white',
   alignItems: 'center',
   '@media (max-width: 900px)': {

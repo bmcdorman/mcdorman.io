@@ -13,6 +13,8 @@ import Pill from './Pill';
 import Rgba from '../math/Rgba';
 import Subsection from './Subsection';
 
+import rehypeRaw from "rehype-raw";
+
 const Description = styled('div', {
   width: '100%'
 });
@@ -44,7 +46,7 @@ class Project extends React.Component<Project.Props> {
         </ItemTop>
         {description && (
           <Description>
-            <Markdown className='project-description'>
+            <Markdown className='project-description' rehypePlugins={[ rehypeRaw ]}>
               {description}
             </Markdown>
           </Description>

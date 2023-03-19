@@ -3,6 +3,10 @@ import ContributionLevel from '../../../model/ContributionLevel';
 import ProgrammingLanguage from '../../../model/ProgrammingLanguage';
 import Project from '../../../model/Project';
 
+// @ts-ignore
+import description from 'bundle-text:./description.md';
+
+
 export default {
   id: 'kipr-link',
   name: 'Link Robot Controller',
@@ -12,10 +16,9 @@ export default {
     programmingLanguages: [
       ProgrammingLanguage.C,
       ProgrammingLanguage.CPlusPlus,
-      ProgrammingLanguage.JavaScript,
     ],
   }],
-  description: '',
+  description,
   roleIds: [ 'kipr-software-engineer' ],
-  relatedProjectIds: [ 'kipr-wallaby', 'kipr-libwallaby' ],
+  relatedProjectIds: [ 'kipr-wallaby', 'kipr-wombat', 'kipr-libwallaby' ],
 } as Project;

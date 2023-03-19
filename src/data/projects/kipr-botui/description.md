@@ -1,0 +1,1 @@
+An on-robot Qt-based user interface for KIPR robot controllers. Used for running programs, manipulating actuators, introspecting on sensors, calibrating camera, and more.

@@ -3,6 +3,9 @@ import ContributionLevel from '../../../model/ContributionLevel';
 import ProgrammingLanguage from '../../../model/ProgrammingLanguage';
 import Project from '../../../model/Project';
 
+// @ts-ignore
+import description from 'bundle-text:./description.md';
+
 export default {
   id: 'kipr-wallaby',
   name: 'Wallaby Robot Controller',
@@ -15,6 +18,6 @@ export default {
       ProgrammingLanguage.JavaScript
     ],
   }],
-  description: '',
+  description,
   roleId: 'kipr-lead-software-engineer',
 } as Project;

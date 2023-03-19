@@ -1,1 +1,3 @@
 Designed and implemented pointing gesture recognition software based on skeleton tracking, eye tracking, and scene object input. Rendered the scene with a custom Vulkan renderer from the perspective of the user's gesture to quickly extract reference probabilities for each object in the scene. Allowed real time pointing gesture estimation for hundreds of humanoids simultaneously with thousands of objects in the scene on commodity hardware.
+
+<iframe class="embedded-video" src="https://www.youtube.com/embed/YZd_TlQAIYk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

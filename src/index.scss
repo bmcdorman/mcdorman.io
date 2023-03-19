@@ -13,6 +13,12 @@ html {
   background-color: #eee;
 }
 
+@media screen and (max-width: 800px) {
+  html {
+    font-size: 16px;
+  }
+}
+
 a {
   color: inherit;
 }
@@ -40,6 +46,25 @@ ul {
 }
 
 .project-description h1 {
+  font-size: 1.1rem;
+  font-weight: inherit;
+}
+
+.project-description h2 {
   font-size: 1rem;
   font-weight: inherit;
+}
+
+.embedded-video {
+  display: block;
+  width: 600px;
+  height: 338px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 800px) {
+  .embedded-video {
+    width: 300px;
+    height: 169px;
+  }
 }

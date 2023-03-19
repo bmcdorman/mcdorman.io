@@ -14,3 +14,13 @@ Front-end implemented in React and TypeScript. WebSockets utilized for realtime 
 
 # Back-end
 Backend implemented in TypeScript and RethinkDB, with realtime record updates (similar to Google Docs). Deployed to a Kubernetes cluster on Google Cloud Platform.
+
+# Demos
+
+## Animation
+
+<iframe class="embedded-video" src="https://www.youtube.com/embed/HYvv6quZBs4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+## Mapping and Navigation
+
+<iframe class="embedded-video" src="https://www.youtube.com/embed/dHn3lGJBXYU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

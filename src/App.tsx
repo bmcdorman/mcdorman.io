@@ -12,6 +12,7 @@ import HomePage from './pages/HomePage';
 import RolePage from './pages/RolePage';
 import SchoolPage from './pages/SchoolPage';
 import StaticResumePage from './pages/StaticResumePage';
+import ScrollToTop from './ui/ScrollToTop';
 
 interface AppProps {
 
@@ -33,15 +34,17 @@ class App extends React.Component {
       <Container>
         <DynamicBackground />
         <Top />
-        <Switch>
-          <Route path='/company/:id' component={CompanyPage} />
-          <Route path='/school/:id' component={SchoolPage} />
-          <Route path='/project/:id' component={ProjectPage} />
-          <Route path='/role/:id' component={RolePage} />
-          <Route path='/resume' component={ResumePage} />
-          <Route path="/" component={ResumePage} />
-          <Route component={NotFound} />
-        </Switch>
+        <ScrollToTop>
+          <Switch>
+            <Route path='/company/:id' component={CompanyPage} />
+            <Route path='/school/:id' component={SchoolPage} />
+            <Route path='/project/:id' component={ProjectPage} />
+            <Route path='/role/:id' component={RolePage} />
+            <Route path='/resume' component={ResumePage} />
+            <Route path="/" component={ResumePage} />
+            <Route component={NotFound} />
+          </Switch>
+        </ScrollToTop>
         <Footer />
       </Container>
     );

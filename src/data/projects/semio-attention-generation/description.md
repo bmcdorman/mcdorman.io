@@ -1,1 +1,3 @@
 Designed and implemented an attention generation system for robots, allowing the robot to achieve realistic eye gaze behavior in both social and non-social contexts. A layered approach was utilized, with saliency, functional, and conversational models.
+
+<iframe class="embedded-video" src="https://www.youtube.com/embed/lt_PcD9MamA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

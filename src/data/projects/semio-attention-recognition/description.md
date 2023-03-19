@@ -1,0 +1,3 @@
+Designed and implemented attention recognition software based on skeleton tracking, eye tracking, and scene object input. Rendered the scene with a custom Vulkan renderer from the perspective of the user's gesture to quickly extract reference probabilities for each object in the scene.
+
+<iframe class="embedded-video" src="https://www.youtube.com/embed/yOnQyFnM0Iw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
