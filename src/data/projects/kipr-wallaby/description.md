@@ -4,3 +4,5 @@ Lead the designed, development, and deployment of the software stack for the KIP
   - On-robot controller user interface (running programs, viewing sensors, manipulating actuators, etc.)
   - Web-based IDE
   - Factory testing tools
+
+<img src="/wallaby.png" class="embedded-image" height="auto" />

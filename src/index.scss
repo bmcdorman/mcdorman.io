@@ -66,9 +66,21 @@ ul {
   margin: 0 auto;
 }
 
+.embedded-image {
+  display: block;
+  width: 300px;
+  height: auto;
+  margin: 0 auto;
+}
+
 @media screen and (max-width: 800px) {
   .embedded-video {
     width: 300px;
     height: 169px;
+  }
+
+  .embedded-image {
+    width: 150px;
+    height: auto;
   }
 }

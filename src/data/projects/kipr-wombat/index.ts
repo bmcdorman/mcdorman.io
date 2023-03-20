@@ -3,6 +3,9 @@ import ContributionLevel from '../../../model/ContributionLevel';
 import ProgrammingLanguage from '../../../model/ProgrammingLanguage';
 import Project from '../../../model/Project';
 
+// @ts-ignore
+import description from 'bundle-text:./description.md';
+
 export default {
   id: 'kipr-wombat',
   name: 'Wombat Robot Controller',
@@ -14,6 +17,6 @@ export default {
       ProgrammingLanguage.CPlusPlus,
     ],
   }],
-  description: '',
-  roleId: 'kipr-tac-member',
+  description,
+  roleIds: ['kipr-tac-member'],
 } as Project;

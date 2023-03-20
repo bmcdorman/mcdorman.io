@@ -19,5 +19,5 @@ export default {
     ],
   }],
   description,
-  roleId: 'kipr-lead-software-engineer',
+  roleIds: ['kipr-lead-software-engineer'],
 } as Project;
