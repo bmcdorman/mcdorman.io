@@ -325,7 +325,6 @@ export const StaticResume = ({ resume, roles, education, organizations }: Static
     <Container>
       <Name>Braden McDorman</Name>
       <Bar>
-        <ContactComponent>Ponte Vedra, FL</ContactComponent>
         <ContactComponent>(405) 795-1800</ContactComponent>
         <ContactComponent>braden@mcdorman.io</ContactComponent>
       </Bar>
