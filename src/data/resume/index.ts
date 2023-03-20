@@ -63,7 +63,7 @@ export default {
       Skill.programmingLanguage(ProgrammingLanguage.Java),
       Skill.programmingLanguage(ProgrammingLanguage.Latex),
       Skill.programmingLanguage(ProgrammingLanguage.ObjectiveC),
-      Skill.programmingLanguage(ProgrammingLanguage.QtQuick),
+      Skill.programmingLanguage(ProgrammingLanguage.Qml),
       Skill.library('tokio'),
       Skill.library('OpenGL'),
       Skill.library('WebGL'),
