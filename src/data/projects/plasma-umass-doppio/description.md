@@ -1,0 +1,1 @@
+Added a transparent TCP to WebSocket networking layer into the Doppio VM, a JVM written in JavaScript. This allowed Java programs to be run in the browser with full networking capabilities.

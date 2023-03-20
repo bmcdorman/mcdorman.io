@@ -110,7 +110,7 @@ class Education extends React.Component<Props> {
             </Company>
           )}
         </ItemTop>
-        {description && !mini && <Markdown >{description}</Markdown>}
+        {description && !mini && <Markdown className='smaller'>{description}</Markdown>}
       </ItemContainer>
     );
   }

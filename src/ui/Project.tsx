@@ -16,7 +16,7 @@ import Subsection from './Subsection';
 import rehypeRaw from "rehype-raw";
 
 const Description = styled('div', {
-  width: '100%'
+  width: '100%',
 });
 
 const StyledSubsection = styled(Subsection, {
@@ -46,7 +46,7 @@ class Project extends React.Component<Project.Props> {
         </ItemTop>
         {description && (
           <Description>
-            <Markdown className='project-description' rehypePlugins={[ rehypeRaw ]}>
+            <Markdown className='project-description smaller' rehypePlugins={[ rehypeRaw ]}>
               {description}
             </Markdown>
           </Description>

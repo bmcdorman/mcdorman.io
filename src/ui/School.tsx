@@ -51,7 +51,7 @@ class School extends React.Component<School.Props> {
           <FlexSpacer />
           {school.logoUri ? <Image src={school.logoUri} /> : null}
         </Top>
-        {description ? <Markdown>{description}</Markdown> : null}
+        {description ? <Markdown className='smaller'>{description}</Markdown> : null}
       </Container>
     );
   }

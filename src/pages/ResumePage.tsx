@@ -69,8 +69,8 @@ class ResumePage extends React.Component<ResumePage.Props, ResumePage.State> {
     super(props);
 
     this.state = {
-      rolesStyle: ResumePage.RolesStyle.Expanded,
-      advisorRolesStyle: ResumePage.RolesStyle.Expanded,
+      rolesStyle: ResumePage.RolesStyle.Compressed,
+      advisorRolesStyle: ResumePage.RolesStyle.Compressed,
       size: undefined,
     };
   }

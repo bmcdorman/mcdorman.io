@@ -119,7 +119,7 @@ class Role extends React.Component<Props> {
             </Company>
           )}
         </ItemTop>
-        {description && !mini && <Markdown>{description}</Markdown>}
+        {description && !mini && <Markdown className='role-description smaller'>{description}</Markdown>}
       </ItemContainer>
     );
   }
