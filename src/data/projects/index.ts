@@ -13,6 +13,7 @@ import semioDeicticRecognition from './semio-deictic-recognition';
 import kiprBotui from './kipr-botui';
 import kiprPcompiler from './kipr-pcompiler';
 import plasmaUmassDoppio from './plasma-umass-doppio';
+import semioKiprSimulator from './semio-kipr-simulator';
 
 export default bundle([
   bobblesportsComrexReverseEngineering,
@@ -27,5 +28,6 @@ export default bundle([
   semioAttentionGeneration,
   semioAttentionRecognition,
   semioDeicticRecognition,
-  plasmaUmassDoppio
+  plasmaUmassDoppio,
+  semioKiprSimulator
 ]);
