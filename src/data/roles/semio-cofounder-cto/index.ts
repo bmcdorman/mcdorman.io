@@ -12,6 +12,7 @@ export default {
   name: 'Co-Founder & CTO',
   organizationRef: OrganizationRef.company('semio'),
   startDate: '2015-01-02',
+  endDate: '2023-04-03',
   location: {
     type: Location.Type.Onsite,
     location: 'Los Angeles, CA',
