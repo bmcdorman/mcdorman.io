@@ -1,1 +1,1 @@
-Software engineer on the Scenario Authoring team within the Simulation organization, building tools for authoring autonomous vehicle simulation scenarios used to validate vehicle safety and test various vehicle components.
+Built simulation authoring tools used to validate vehicle safety and test autonomous vehicle components.

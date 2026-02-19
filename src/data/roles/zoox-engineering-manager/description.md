@@ -1,3 +1,5 @@
-Managing a team of six engineers to deliver sophisticated autonomous vehicle simulation authoring tools to a variety of internal stakeholders. Our team's products are used to validate the vehicle's safety and test various vehicle components.
+Leading a six person mixed team of software and ML engineers to deliver autonomous vehicle simulation tools for a broad set of internal stakeholders.
 
-Driving product vision, cross-functional and cross-team alignment, customer relationships, UX, project management, and direct report growth, with a sprinkling of software engineering IC work here and there.
+Spearheading the team's transition from full-stack web development to AI/ML as core team capabilities, including hiring of ML engineers, introducing customer-aligned agentic workflows, and productionizing AI-driven exploratory testing with foundation and in-house ML models.
+
+Responsibilities span product vision and roadmap, people management and direct report growth, cross-functional and cross-team alignment, and customer relationships.

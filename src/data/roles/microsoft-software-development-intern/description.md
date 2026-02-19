@@ -1,1 +1,1 @@
-Interned on the Windows Driver Frameworks team. Worked on an exciting experimental technology initiative to ease developing kernel and user-level drivers for Windows.
+Interned on the Windows Driver Frameworks team.

@@ -1,1 +1,1 @@
-Advising company founders and partially managed a team of engineers developing Bobble Sports' web-based event (e.g., sport, concert, etc.) interaction system, including React-based front-end, mobile app development, Kubernetes backend, and high performance audio synthesis and streaming system.
+Advising company founders and partially managed a team of engineers developing Bobble Sports' web-based event (e.g., sport, concert, etc.) interaction system, including React-based front-end, mobile app development, Kubernetes backend, and high performance audio synthesis system.

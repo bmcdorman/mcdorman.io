@@ -12,6 +12,7 @@ export default {
   name: 'Advisor',
   organizationRef: OrganizationRef.company('bobblesports'),
   startDate: '2020-01-01',
+  endDate: '2022-04-01',
   description,
   shortDescription,
   location: Location.REMOTE,

@@ -228,7 +228,7 @@ const SkillsSubsection = ({ skills, title }: { skills: Skill[]; title: string; }
   const libraries = skills.filter(skill => skill.type === Skill.Type.Library) as Skill.Library[];
   const platforms = skills.filter(skill => skill.type === Skill.Type.Platform) as Skill.Platform[];
   const tools = skills.filter(skill => skill.type === Skill.Type.Tool) as Skill.Tool[];
-  const techniques = skills.filter(skill => skill.type === Skill.Type.Technique) as Skill.Technique[];
+  const competencies = skills.filter(skill => skill.type === Skill.Type.Competency) as Skill.Competency[];
   
   return (
     <SkillsSubsectionContainer>
@@ -249,9 +249,9 @@ const SkillsSubsection = ({ skills, title }: { skills: Skill[]; title: string; }
         <SkillTypeName>Tools</SkillTypeName>
         {tools.map((skill, i) => <SkillContainer key={i}>{skill.tool}</SkillContainer>)}
       </SkillTypeContainer>}
-      {techniques.length > 0 && <SkillTypeContainer>
-        <SkillTypeName>Techniques</SkillTypeName>
-        {techniques.map((skill, i) => <SkillContainer key={i}>{skill.technique}</SkillContainer>)}
+      {competencies.length > 0 && <SkillTypeContainer>
+        <SkillTypeName>Competencies</SkillTypeName>
+        {competencies.map((skill, i) => <SkillContainer key={i}>{skill.competency}</SkillContainer>)}
       </SkillTypeContainer>}
     </SkillsSubsectionContainer>
   );
