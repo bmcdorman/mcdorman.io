@@ -1,6 +1,3 @@
-I am an expert software engineer, early-stage startup advisor, and entreprenuer with
-12 years of professional experience in software engineering, and nearly 20 years of programming experience, in a diverse set of software disciplines, including
-full-stack web development, robotics, cloud, 3D/GPGPU, desktop applications,
-kernel development, networking, and embedded systems.
+With over ten years of experience, I specialize in leading cross-functional engineering to deliver innovative solutions in autonomous systems.
 
-I am passionate about creating stunning experiences that delight customers.
+As Engineering Manager at Zoox, I focus on building high-impact simulation tools that validate vehicle safety and component performance. Passionate about fostering collaboration and growth, I align product vision with organizational goals while creating user-centric experiences.

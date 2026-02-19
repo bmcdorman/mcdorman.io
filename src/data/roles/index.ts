@@ -1,3 +1,5 @@
+import zooxEngineeringManager from './zoox-engineering-manager';
+import zooxSeniorSoftwareEngineer from './zoox-senior-software-engineer';
 import semioCofounderCto from './semio-cofounder-cto';
 import microsoftSoftwareDevelopmentIntern from './microsoft-software-development-intern';
 import kiprBoardMember from './kipr-board-member';
@@ -17,6 +19,8 @@ import ouRa from './ou-ra';
 import bundle from '../bundle';
 
 export default bundle([
+  zooxEngineeringManager,
+  zooxSeniorSoftwareEngineer,
   semioCofounderCto,
   microsoftSoftwareDevelopmentIntern,
   kiprBoardMember,
