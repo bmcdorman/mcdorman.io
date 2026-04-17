@@ -1,6 +1,7 @@
 const chromeLauncher = require('chrome-launcher');
 const CDP = require('chrome-remote-interface');
 const childProcess = require('child_process');
+const fs = require('fs');
 
 const launchChrome = () => chromeLauncher.launch({
   chromeFlags: [
@@ -12,7 +13,8 @@ const launchChrome = () => chromeLauncher.launch({
 });
 
 const main = async () => {
-  
+  fs.rmSync('.parcel-cache', { recursive: true, force: true });
+
   const parcel = childProcess.exec('yarn watch');
   // wait for parcel to finish bundling
   await new Promise(resolve => setTimeout(resolve, 10000));
