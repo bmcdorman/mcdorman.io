@@ -68,7 +68,7 @@ export default {
     skills: [
       Skill.competency('Technical Leadership'),
       Skill.competency('People Management'),
-      Skill.competency('Agile'),
+      Skill.competency('Developer Experience'),
       Skill.competency('REST / APIs'),
       Skill.competency('Microservice Architectures'),
     ],
