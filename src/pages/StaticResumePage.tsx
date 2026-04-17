@@ -17,9 +17,7 @@ import OrganizationRef from '../model/OrganizationRef';
 import Markdown from '../ui/Markdown';
 import Location from '../model/Location';
 import Skill from '../model/Skill';
-
-// @ts-ignore
-import ProgrammingLanguage from '../model/ProgrammingLanguage';
+import Contact from '../model/Contact';
 
 // @ts-ignore
 import gitInfo from 'git-info';
@@ -33,13 +31,32 @@ const ParagraphRenderer = (props: { children: React.ReactNode }) => {
   return <Paragraph>{props.children}</Paragraph>;
 };
 
+const renderContactInline = (contact: Contact): React.ReactNode => {
+  switch (contact.type) {
+    case Contact.Type.Email:
+      return <a href={`mailto:${contact.email}`}>{contact.email}</a>;
+    case Contact.Type.Phone:
+      return contact.phone;
+    case Contact.Type.LinkedIn:
+      return <a href={`https://www.linkedin.com/in/${contact.username}/`}>linkedin.com/in/{contact.username}</a>;
+    case Contact.Type.GitHub:
+      return <a href={`https://github.com/${contact.username}`}>github.com/{contact.username}</a>;
+  }
+};
+
 const Container = styled('div', {
-  fontSize: '0.8rem',
-  lineHeight: '1.35',
+  fontSize: '0.78rem',
+  lineHeight: '1.38',
 });
 
 const Name = styled('h1', {
   margin: 0,
+});
+
+const HeaderLocation = styled('div', {
+  fontSize: '0.85rem',
+  color: '#444',
+  marginBottom: '0.2em',
 });
 
 const Bar = styled('div', {
@@ -54,6 +71,7 @@ const ContactComponent = styled('div', {
   paddingLeft: '1em',
   paddingRight: '1em',
   borderRight: '1px solid #ccc',
+  whiteSpace: 'nowrap',
   ':last-child': {
     paddingRight: '0',
     borderRight: 'none',
@@ -66,6 +84,7 @@ const SectionContainer = styled('div', {
 
 const SectionName = styled('h2', {
   margin: 0,
+  marginBottom: '0.3em',
   width: '100%',
   borderBottom: '1px solid #000',
 });
@@ -199,36 +218,37 @@ const Link = ({ title, href }: { title: string, href: string; }) => {
   );
 };
 
-const SkillsSubsectionContainer = styled('div', {
-  marginTop: '0.7em',
+const SkillGroupContainer = styled('div', {
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'baseline',
+  flexWrap: 'wrap',
+  marginTop: '0.4em',
 });
 
-const SkillSubsectionTitle = styled('div', {
+const SkillGroupTitle = styled('span', {
   fontWeight: 'bold',
+  whiteSpace: 'nowrap',
+  marginRight: '0.6em',
 });
 
-const SkillTypeContainer = styled('div', {
-  marginLeft: '1em',
-});
-
-const SkillTypeName = styled('span', {
-  fontWeight: 'bold',
-});
-
-const SkillContainer = styled('span', {
+const SkillItem = styled('span', {
   paddingLeft: '0.5em',
   paddingRight: '0.5em',
   borderRight: '1px solid #ccc',
+  whiteSpace: 'nowrap',
   ':last-child': {
     borderRight: 'none',
-  }
+  },
 });
 
 const CompactRoleContainer = styled('div', {
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  marginTop: '0.15em',
+  marginTop: '0.1em',
+  fontSize: '0.88em',
+  color: '#333',
 });
 
 const CompactRoleDot = styled('span', {
@@ -270,39 +290,14 @@ const CompactRole = ({ role, organization }: { role: RoleModel; organization?: O
   );
 };
 
-const SkillsSubsection = ({ skills, title }: { skills: Skill[]; title: string; }) => {
-  const programmingLanguages = skills.filter(skill => skill.type === Skill.Type.ProgrammingLanguage) as Skill.ProgrammingLanguage[];
-  const libraries = skills.filter(skill => skill.type === Skill.Type.Library) as Skill.Library[];
-  const platforms = skills.filter(skill => skill.type === Skill.Type.Platform) as Skill.Platform[];
-  const tools = skills.filter(skill => skill.type === Skill.Type.Tool) as Skill.Tool[];
-  const competencies = skills.filter(skill => skill.type === Skill.Type.Competency) as Skill.Competency[];
-  
-  return (
-    <SkillsSubsectionContainer>
-      <SkillSubsectionTitle>{title}</SkillSubsectionTitle>
-      {programmingLanguages.length > 0 && <SkillTypeContainer>
-        <SkillTypeName>Programming Languages</SkillTypeName>
-        {programmingLanguages.map((skill, i) => <SkillContainer key={i}>{ProgrammingLanguage.name(skill.programmingLanguage)}</SkillContainer>)}
-      </SkillTypeContainer>}
-      {libraries.length > 0 && <SkillTypeContainer>
-        <SkillTypeName>Libraries</SkillTypeName>
-        {libraries.map((skill, i) => <SkillContainer key={i}>{skill.library}</SkillContainer>)}
-      </SkillTypeContainer>}
-      {platforms.length > 0 && <SkillTypeContainer>
-        <SkillTypeName>Platforms</SkillTypeName>
-        {platforms.map((skill, i) => <SkillContainer key={i}>{skill.platform}</SkillContainer>)}
-      </SkillTypeContainer>}
-      {tools.length > 0 && <SkillTypeContainer>
-        <SkillTypeName>Tools</SkillTypeName>
-        {tools.map((skill, i) => <SkillContainer key={i}>{skill.tool}</SkillContainer>)}
-      </SkillTypeContainer>}
-      {competencies.length > 0 && <SkillTypeContainer>
-        <SkillTypeName>Competencies</SkillTypeName>
-        {competencies.map((skill, i) => <SkillContainer key={i}>{skill.competency}</SkillContainer>)}
-      </SkillTypeContainer>}
-    </SkillsSubsectionContainer>
-  );
-};
+const SkillGroup = ({ title, skills }: { title: string; skills: Skill[] }) => (
+  <SkillGroupContainer>
+    <SkillGroupTitle>{title}</SkillGroupTitle>
+    {skills.map((skill, i) => (
+      <SkillItem key={i}>{Skill.name(skill)}</SkillItem>
+    ))}
+  </SkillGroupContainer>
+);
 
 const Footer = styled('div', {
   marginTop: '0.5em',
@@ -310,16 +305,6 @@ const Footer = styled('div', {
   paddingTop: '0.5em',
   fontSize: '0.6rem',
   textAlign: 'center',
-});
-
-const NoteBox = styled('div', {
-  border: '1px solid #000',
-  paddingLeft: '0.5em',
-  paddingRight: '0.5em',
-  paddingTop: '0.4em',
-  paddingBottom: '0.4em',
-  marginTop: '1em',
-  fontWeight: 'bold',
 });
 
 interface StaticResumeProps {
@@ -364,7 +349,7 @@ export const StaticResume = ({ resume, roles, education, organizations }: Static
 
   const employeeRoleModels = roleModelsWithShorthands.filter(([role, _]) => role.kind === 'employee' && !role.staticCompact);
   const compactRoleModels = roleModelsWithShorthands.filter(([role, _]) => role.kind === 'employee' && role.staticCompact);
-  const advisorRoleModels = roleModelsWithShorthands.filter(([role, _]) => role.kind === 'advisor');
+  const advisorRoleModels = roleModelsWithShorthands.filter(([role, _]) => role.kind === 'advisor' && !role.hideStatic);
   
   const educationModels: EducationModel[] = Object.values(education);
   educationModels.sort(descending);
@@ -372,14 +357,13 @@ export const StaticResume = ({ resume, roles, education, organizations }: Static
   return (
     <Container>
       <Name>Braden McDorman</Name>
+      <HeaderLocation>San Francisco Bay Area</HeaderLocation>
       <Bar>
-        <ContactComponent>(405) 795-1800</ContactComponent>
-        <ContactComponent>braden@mcdorman.io</ContactComponent>
+        {resume.contacts.map((contact, i) => (
+          <ContactComponent key={i}>{renderContactInline(contact)}</ContactComponent>
+        ))}
       </Bar>
-      <NoteBox>
-        An interactive version of this resume with notable projects, additional roles, and expanded role details is available at <a href='https://mcdorman.io/resume'>mcdorman.io/resume</a>.
-      </NoteBox>
-      
+
       <Section title="Summary">
         <Markdown components={{ p: ParagraphRenderer }}>{resume.about}</Markdown>
       </Section>
@@ -429,9 +413,9 @@ export const StaticResume = ({ resume, roles, education, organizations }: Static
         ))}
       </Section>
       <Section title="Skills">
-        <SkillsSubsection title='Over 10 years' skills={resume.skills.expert} />
-        <SkillsSubsection title='Over 5 years' skills={resume.skills.proficient} />
-        <SkillsSubsection title='Over 2 years' skills={resume.skills.familiar} />
+        {resume.skillGroups.map((group, i) => (
+          <SkillGroup key={i} title={group.title} skills={group.skills} />
+        ))}
       </Section>
       <Footer>
         Generated on {new Date().toLocaleDateString()} from <a href='https://mcdorman.io/resume'>mcdorman.io/resume</a> (commit {gitInfo.commitHash}).

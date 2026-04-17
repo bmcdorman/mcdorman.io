@@ -1,3 +1,1 @@
-With **over 10 years of experience as a leader and individual contributor** in both startups and large organizations, I am a highly ambitious and adaptable engineer **capable of driving projects from zero to one**, including cross-functional alignment, design, planning, implementation, and delivery.
-
-In my recent role I **spearheaded development and adoption of AI/ML for both engineering and customer teams, including agentic workflows and in-house ML models**.
+Engineering leader and systems builder with over a decade of experience in **simulation, robotics, and AI/ML tooling**. Built a robotics software company from scratch and now lead the platform team at Zoox enabling millions of autonomous vehicle simulations used to validate vehicle safety at scale.

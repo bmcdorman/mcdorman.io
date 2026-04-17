@@ -6,7 +6,8 @@ const launchChrome = () => chromeLauncher.launch({
   chromeFlags: [
     '--window-size=1024,768',
     '--disable-gpu',
-    '--headless'
+    '--headless',
+    '--disable-cache'
   ]
 });
 

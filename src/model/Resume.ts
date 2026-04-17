@@ -5,11 +5,10 @@ interface Resume {
   about: string;
   contacts: Contact[];
   roleIds: string[];
-  skills: {
-    expert: Skill[];
-    proficient: Skill[];
-    familiar: Skill[];
-  };
+  skillGroups: {
+    title: string;
+    skills: Skill[];
+  }[];
 }
 
 export default Resume;

@@ -107,7 +107,7 @@ class ResumePage extends React.Component<ResumePage.Props, ResumePage.State> {
   render() {
     const { props, state } = this;
     const { resume, roles, education } = props;
-    const { about, contacts, skills } = resume;
+    const { about, contacts, skillGroups } = resume;
     const { rolesStyle, size } = state;
 
     const roleModels: RoleModel[] = resume.roleIds.map(id => roles[id]);
@@ -183,22 +183,12 @@ class ResumePage extends React.Component<ResumePage.Props, ResumePage.State> {
     );
 
     const skillsSection = (
-      <Section title='Experience'>
-        {skills.expert && (
-          <Subsection title='Over 10 years'>
-            <Skills skills={skills.expert} />
+      <Section title='Skills'>
+        {skillGroups.map((group, i) => (
+          <Subsection key={i} title={group.title}>
+            <Skills skills={group.skills} />
           </Subsection>
-        )}
-        {skills.proficient && (
-          <Subsection title='Over 5 years'>
-            <Skills skills={skills.proficient} />
-          </Subsection>
-        )}
-        {skills.familiar && (
-          <Subsection title='Over 2 years'>
-            <Skills skills={skills.familiar} />
-          </Subsection>
-        )}
+        ))}
       </Section>
     );
 
