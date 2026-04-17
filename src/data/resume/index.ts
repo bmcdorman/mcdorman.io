@@ -34,16 +34,6 @@ export default {
       Skill.programmingLanguage(ProgrammingLanguage.Rust),
     ],
   }, {
-    title: 'Robotics & Simulation',
-    skills: [
-      Skill.library('Robot Operating System'),
-      Skill.library('OpenGL'),
-      Skill.library('Qt'),
-      Skill.library('protobuf'),
-      Skill.library('gRPC'),
-      Skill.tool('CMake'),
-    ],
-  }, {
     title: 'Infrastructure',
     skills: [
       Skill.tool('Docker'),
@@ -68,9 +58,20 @@ export default {
     skills: [
       Skill.competency('Technical Leadership'),
       Skill.competency('People Management'),
+      Skill.competency('Educational Technology'),
       Skill.competency('Agile'),
       Skill.competency('REST / APIs'),
       Skill.competency('Microservice Architectures'),
+    ],
+  }, {
+    title: 'Robotics & Simulation',
+    skills: [
+      Skill.library('Robot Operating System'),
+      Skill.library('OpenGL'),
+      Skill.library('Qt'),
+      Skill.library('protobuf'),
+      Skill.library('gRPC'),
+      Skill.tool('CMake'),
     ],
   }],
 } as Resume;
