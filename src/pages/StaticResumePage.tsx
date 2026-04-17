@@ -418,7 +418,7 @@ export const StaticResume = ({ resume, roles, education, organizations }: Static
         ))}
       </Section>
       <Footer>
-        Generated on {new Date().toLocaleDateString()} from <a href='https://mcdorman.io/resume'>mcdorman.io/resume</a> (commit {gitInfo.commitHash}).
+        Generated on {new Date().toLocaleDateString()} from <a href='https://mcdorman.io/resume'>mcdorman.io/resume</a> (commit {gitInfo.commitHash}{gitInfo.branch !== 'master' && gitInfo.branch !== 'main' ? `, branch ${gitInfo.branch}` : ''}).
       </Footer>
     </Container>
   )
