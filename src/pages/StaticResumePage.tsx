@@ -25,7 +25,7 @@ import ProgrammingLanguage from '../model/ProgrammingLanguage';
 import gitInfo from 'git-info';
 
 const Paragraph = styled('p', {
-  marginTop: '0.2em',
+  marginTop: '0',
   marginBottom: '0.9em',
 });
 
@@ -34,7 +34,8 @@ const ParagraphRenderer = (props: { children: React.ReactNode }) => {
 };
 
 const Container = styled('div', {
-  fontSize: '0.8rem'
+  fontSize: '0.8rem',
+  lineHeight: '1.35',
 });
 
 const Name = styled('h1', {
@@ -60,7 +61,7 @@ const ContactComponent = styled('div', {
 });
 
 const SectionContainer = styled('div', {
-  marginTop: '0.5em',
+  marginTop: '0.8em',
 });
 
 const SectionName = styled('h2', {
@@ -79,7 +80,7 @@ const Section = (props: { title: string, children: React.ReactNode }) => {
 };
 
 const RoleContainer = styled('div', {
-  marginTop: '0.5em',
+  marginTop: '0.8em',
 });
 
 const RoleInfo = styled('div', {
@@ -199,7 +200,7 @@ const Link = ({ title, href }: { title: string, href: string; }) => {
 };
 
 const SkillsSubsectionContainer = styled('div', {
-  marginTop: '0.5em',
+  marginTop: '0.7em',
 });
 
 const SkillSubsectionTitle = styled('div', {
@@ -222,6 +223,52 @@ const SkillContainer = styled('span', {
     borderRight: 'none',
   }
 });
+
+const CompactRoleContainer = styled('div', {
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  marginTop: '0.15em',
+});
+
+const CompactRoleDot = styled('span', {
+  marginLeft: '0.4em',
+  marginRight: '0.4em',
+  color: '#999',
+});
+
+const EarlierExperienceHeading = styled('div', {
+  fontStyle: 'italic',
+  marginTop: '0.7em',
+  marginBottom: '0.15em',
+  borderBottom: '1px solid #ccc',
+  fontSize: '0.85em',
+  color: '#444',
+});
+
+const CompactRole = ({ role, organization }: { role: RoleModel; organization?: OrganizationModel }) => {
+  const { name, startDate, endDate, location } = role;
+  const parts: string[] = [];
+  if (organization) parts.push(OrganizationModel.shorthand(organization));
+  parts.push(name);
+  if (location) {
+    parts.push(location.type === Location.Type.Remote ? 'Remote' : location.location);
+  }
+  const dateStr = `${toCompactHumanMonthYear(new Date(startDate))} to ${endDate ? toCompactHumanMonthYear(new Date(endDate)) : 'Present'}`;
+
+  return (
+    <CompactRoleContainer>
+      {parts.map((part, i) => (
+        <React.Fragment key={i}>
+          {i > 0 && <CompactRoleDot>·</CompactRoleDot>}
+          <span>{part}</span>
+        </React.Fragment>
+      ))}
+      <CenteredLine />
+      <Dates>{dateStr}</Dates>
+    </CompactRoleContainer>
+  );
+};
 
 const SkillsSubsection = ({ skills, title }: { skills: Skill[]; title: string; }) => {
   const programmingLanguages = skills.filter(skill => skill.type === Skill.Type.ProgrammingLanguage) as Skill.ProgrammingLanguage[];
@@ -315,7 +362,8 @@ export const StaticResume = ({ resume, roles, education, organizations }: Static
       ]);
   }
 
-  const employeeRoleModels = roleModelsWithShorthands.filter(([role, _]) => role.kind === 'employee');
+  const employeeRoleModels = roleModelsWithShorthands.filter(([role, _]) => role.kind === 'employee' && !role.staticCompact);
+  const compactRoleModels = roleModelsWithShorthands.filter(([role, _]) => role.kind === 'employee' && role.staticCompact);
   const advisorRoleModels = roleModelsWithShorthands.filter(([role, _]) => role.kind === 'advisor');
   
   const educationModels: EducationModel[] = Object.values(education);
@@ -345,6 +393,16 @@ export const StaticResume = ({ resume, roles, education, organizations }: Static
             shorthandMode={shorthandMode}
           />
         ))}
+        {compactRoleModels.length > 0 && <>
+          <EarlierExperienceHeading>Earlier Experience</EarlierExperienceHeading>
+          {compactRoleModels.map(([role]) => (
+            <CompactRole
+              key={role.id}
+              role={role}
+              organization={role.organizationRef ? organizations[role.organizationRef.id] : undefined}
+            />
+          ))}
+        </>}
       </Section>
 
       <Section title="Advisory Experience">

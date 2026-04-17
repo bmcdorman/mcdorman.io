@@ -11,6 +11,7 @@ interface Role {
   organizationRef?: OrganizationRef;
   location?: Location;
   hideStatic?: boolean;
+  staticCompact?: boolean;
   kind: 'employee' | 'advisor';
 }
 
