@@ -4,11 +4,14 @@ import Skill from '../../model/Skill';
 
 // @ts-ignore
 import about from 'bundle-text:./about.md';
+// @ts-ignore
+import webAbout from 'bundle-text:./web_about.md';
 
 import roles from '../roles';
 
 export default {
   about,
+  webAbout,
   roleIds: Object.keys(roles),
   contacts: [{
     type: 'email',

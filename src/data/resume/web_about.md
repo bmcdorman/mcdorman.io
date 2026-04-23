@@ -1,0 +1,1 @@
+Engineering leader and systems builder with over a decade of experience in **simulation, robotics, and AI/ML tooling**. Built a robotics software company from scratch and now lead the platform team at Zoox, enabling autonomous vehicle simulations used to validate vehicle safety at scale.

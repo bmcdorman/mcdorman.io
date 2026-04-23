@@ -3,6 +3,7 @@ import Skill from './Skill';
 
 interface Resume {
   about: string;
+  webAbout?: string;
   contacts: Contact[];
   roleIds: string[];
   skillGroups: {

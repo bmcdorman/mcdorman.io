@@ -107,7 +107,7 @@ class ResumePage extends React.Component<ResumePage.Props, ResumePage.State> {
   render() {
     const { props, state } = this;
     const { resume, roles, education } = props;
-    const { about, contacts, skillGroups } = resume;
+    const { webAbout, about, contacts, skillGroups } = resume;
     const { rolesStyle, size } = state;
 
     const roleModels: RoleModel[] = resume.roleIds.map(id => roles[id]);
@@ -133,7 +133,7 @@ class ResumePage extends React.Component<ResumePage.Props, ResumePage.State> {
 
     const aboutSection = (
       <Section title='Hi! 👋'>
-        <Markdown>{about}</Markdown>
+        <Markdown>{webAbout ?? about}</Markdown>
       </Section>
     );
 
