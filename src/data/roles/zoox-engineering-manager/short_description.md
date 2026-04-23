@@ -1,4 +1,4 @@
-Managing a six-person platform team of software and ML engineers whose tooling enables **hundreds of engineers across dozens of teams** to author and generate millions of simulation scenarios—hand-crafted and genAI-generated—used to validate Zoox's autonomous vehicle, a small team operating with reach that would otherwise require an organization many times larger.
+Managing a six-person platform team of software and ML engineers whose tooling enables **hundreds of engineers across dozens of teams** to author and generate millions of hand-crafted and ML-generated simulation scenarios used to validate Zoox's autonomous vehicle, a small team operating with reach that would otherwise require an organization many times larger.
 
 Defined and drove the team's new charter in generative AI, hiring all but two current members, including every ML engineer, to build out the capability from scratch.
 
