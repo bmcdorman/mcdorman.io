@@ -15,9 +15,20 @@ const launchChrome = () => chromeLauncher.launch({
 const main = async () => {
   fs.rmSync('.parcel-cache', { recursive: true, force: true });
 
-  const parcel = childProcess.exec('yarn watch');
+  const parcel = childProcess.exec('bun run watch');
   // wait for parcel to finish bundling
-  await new Promise(resolve => setTimeout(resolve, 10000));
+  await new Promise((resolve, reject) => {
+    const timeout = setTimeout(() => reject(new Error('Vite timed out after 30s')), 30000);
+    const onData = (data) => {
+      process.stdout.write(data);
+      if (data.includes('ready in') || data.includes('Local:')) {
+        clearTimeout(timeout);
+        resolve();
+      }
+    };
+    parcel.stdout.on('data', onData);
+    parcel.stderr.on('data', onData);
+  });
   const chrome = await launchChrome();
   const protocol = await CDP({ port: chrome.port });
   const { Page } = protocol;
